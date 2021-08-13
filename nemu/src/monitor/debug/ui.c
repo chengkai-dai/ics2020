@@ -45,7 +45,31 @@ static int cmd_help(char *args);
 
 static int cmd_si(char *args)
 {
-  cpu_exec(1);
+  char *val = strtok(args, " ");
+
+  int steps;
+
+  if (val == NULL)
+    steps = 1;
+
+  else
+  {
+    const int len = strlen(val);
+
+    for (int i = 0; i < len; i++)
+    {
+      if (!isdigit(val[i]))
+      {
+        printf("Invalid expression: %s is not a number\n", val);
+        return -1;
+      }
+    }
+
+    steps = atoi(val);
+  }
+  printf("Execute %d steps\n", steps);
+  cpu_exec(steps);
+
   return 0;
 }
 
