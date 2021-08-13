@@ -51,14 +51,12 @@ static int cmd_si(char *args)
 
 static int cmd_info(char *args)
 {
-    printf("info command\n");
+  printf("info command\n");
 
-    if(strcmp(args,"r")== 0){
-      printf("args\n");
-      isa_reg_display();
-    }
-    
-    return 0;
+  if (strcmp(args, "r") == 0)
+    isa_reg_display();
+
+  return 0;
 }
 
 static int cmd_x(char *args)
