@@ -294,38 +294,42 @@ static word_t eval(int s, int e, bool *success)
       val = -1 * eval(s + 1, e, success);
     }
 
-    bool within_p = check_parentheses(s, e);
-
-    if (within_p == true)
-      val = eval(s + 1, e - 1, success);
     else
     {
-      int op = dominant_op(s, e);
-      // op = the position of dominant operator in the token expression;
-      word_t val1 = eval(s, op - 1, success);
-      word_t val2 = eval(op + 1, e, success);
-      // val2 = eval(op + 1, q);
-      switch (tokens[op].type)
-      {
-      case '+':
-        val = val1 + val2;
-        break;
-      case '-':
-        val = val1 - val2;
-        break;
-      case '*':
-        val = val1 * val2;
-        break;
-      case '/':
-        val = val1 / val2;
-        break;
-      case TK_EQ:
-        val = (val1 == val2);
-        break;
 
-      default:
-        printf("eval ERROR: Eval for %d is not implemented.\n", tokens[op].type);
-        assert(0);
+      bool within_p = check_parentheses(s, e);
+
+      if (within_p == true)
+        val = eval(s + 1, e - 1, success);
+      else
+      {
+        int op = dominant_op(s, e);
+        // op = the position of dominant operator in the token expression;
+        word_t val1 = eval(s, op - 1, success);
+        word_t val2 = eval(op + 1, e, success);
+        // val2 = eval(op + 1, q);
+        switch (tokens[op].type)
+        {
+        case '+':
+          val = val1 + val2;
+          break;
+        case '-':
+          val = val1 - val2;
+          break;
+        case '*':
+          val = val1 * val2;
+          break;
+        case '/':
+          val = val1 / val2;
+          break;
+        case TK_EQ:
+          val = (val1 == val2);
+          break;
+
+        default:
+          printf("eval ERROR: Eval for %d is not implemented.\n", tokens[op].type);
+          assert(0);
+        }
       }
     }
   }
