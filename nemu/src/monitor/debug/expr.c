@@ -284,6 +284,11 @@ static word_t eval(int s, int e, bool *success)
 			val = (word_t)strtoul(tokens[s].str, NULL, 0);
 
 		}
+
+    else if (tokens[s].type == '-'){
+			val = -eval(s+1, e, success);
+
+		}
 	}
 	else
 	{
