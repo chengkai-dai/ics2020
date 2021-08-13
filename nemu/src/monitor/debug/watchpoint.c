@@ -26,25 +26,12 @@ void init_wp_pool()
 
 WP *new_wp()
 {
-  WP *free_wp = free_;
-  bool have_free = true;
-  if (free_wp == NULL)
-    have_free = false;
-
-  while (free_wp->free == false && free_wp->next != NULL)
-    free_wp = free_wp->next;
-    
-  if (free_wp == false)
-    have_free = false;
-
-  if (have_free == false)
-  {
-    printf("No free watchpoint!\n");
-    assert(0);
-    return NULL;
-  }
-  else
-    return free_wp;
+  assert(free_ != NULL);
+  WP *p = free_;
+  free_ = free_->next;
+  assert(p->free == false);
+  p->free = true;
+  return p;
 }
 
 void free_wp(WP *wp)
