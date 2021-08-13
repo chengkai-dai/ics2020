@@ -121,13 +121,27 @@ static int cmd_x(char *args)
     //   // uint32_t val = vaddr_read(addr + 4 * i, 4);
     //   // printf("0x%x ", val);
     //   printf("mem access is under construction");
-    
+
     // }
     printf("mem access is under construction");
-    printf("Access 4*%d bytes from mem[0x%lx]\n",num_4bytes,addr);
+    printf("Access 4*%d bytes from mem[0x%lx]\n", num_4bytes, addr);
   }
 
   return 0;
+}
+
+static int cmd_w(char *args)
+{
+  bool success = true;
+  word_t val = expr(args, &success);
+  if (!success)
+  {
+    printf("invalid expression: '%s'\n", args);
+    return 0;
+  }
+  printf("Watch Point Setting is under construction.\n");
+  val=0;
+  return val;
 }
 
 static struct
@@ -144,6 +158,7 @@ static struct
     {"si", "Single Step Execution", cmd_si},
     {"info", "Status Check", cmd_info},
     {"x", "Memory Check", cmd_x},
+    {"w", "Watch Point Setting", cmd_w},
 
 };
 
