@@ -103,12 +103,12 @@ static int cmd_x(char *args)
     }
   }
 
-  int32_t num_4bytes = (int32_t)strtol(args1, NULL, 10);
+  int num_4bytes = (int)strtol(args1, NULL, 10);
 
   //parse the second argument, the actual addr for the memory data
   char *args2 = args + strlen(args1) + 1;
   bool success = true;
-  uint32_t addr = expr(args2, &success);
+  word_t addr = expr(args2, &success);
   if (!success)
   {
     printf("invalid addr expression: '%s'\n", args2);
@@ -116,12 +116,15 @@ static int cmd_x(char *args)
   else
   {
     // printf("addr 0x%x\n", addr);
-    for (int i = 0; i < num_4bytes; ++i)
-    {
-      uint32_t val = vaddr_read(addr + 4 * i, 4);
-      printf("0x%x ", val);
-    }
-    printf("\n");
+    // for (int i = 0; i < num_4bytes; ++i)
+    // {
+    //   // uint32_t val = vaddr_read(addr + 4 * i, 4);
+    //   // printf("0x%x ", val);
+    //   printf("mem access is under construction");
+    
+    // }
+    printf("mem access is under construction");
+    printf("Access 4*%d bytes from mem[0x%lx]\n",num_4bytes,addr);
   }
 
   return 0;
