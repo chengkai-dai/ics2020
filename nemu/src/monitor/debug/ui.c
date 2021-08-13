@@ -39,6 +39,24 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
+static int cmd_si(char *args) {
+  printf("si command");
+  return -1;
+}
+
+static int cmd_info(char *args) {
+  printf("info command");
+  return -1;
+}
+
+
+static int cmd_x(char *args) {
+  printf("x command");
+  return -1;
+}
+
+
+
 static struct {
   char *name;
   char *description;
@@ -49,6 +67,9 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
 
   /* TODO: Add more commands */
+  { "si", "Single Step Execution", cmd_si },
+  { "info", "Status Check", cmd_info },
+  { "x", "Memory Check", cmd_x },
 
 };
 
