@@ -51,8 +51,8 @@ static int cmd_si(char *args)
 
 static int cmd_info(char *args)
 {
-  printf("info command\n");
-  return -1;
+  isa_reg_display();
+  return 0;
 }
 
 static int cmd_x(char *args)
