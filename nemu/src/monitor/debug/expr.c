@@ -255,6 +255,7 @@ static int dominant_op(int s, int e)
 
 static word_t eval(int s, int e, bool *success)
 {
+  printf("s %d e %d\n",s,e);
   word_t val = 0;
   if (s > e)
   {
