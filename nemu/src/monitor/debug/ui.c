@@ -40,18 +40,18 @@ static int cmd_q(char *args) {
 static int cmd_help(char *args);
 
 static int cmd_si(char *args) {
-  printf("si command");
+  printf("si command\n");
   return -1;
 }
 
 static int cmd_info(char *args) {
-  printf("info command");
+  printf("info command\n");
   return -1;
 }
 
 
 static int cmd_x(char *args) {
-  printf("x command");
+  printf("x command\n");
   return -1;
 }
 
