@@ -286,7 +286,7 @@ static word_t eval(int s, int e, bool *success)
 		}
 
     else if (tokens[s].type == '-'){
-			val = -eval(s+1, e, success);
+			val = -1*eval(s+1, e, success);
 
 		}
 	}
