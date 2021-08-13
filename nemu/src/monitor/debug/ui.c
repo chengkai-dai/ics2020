@@ -1,6 +1,7 @@
 #include <isa.h>
 #include "expr.h"
 #include "watchpoint.h"
+#include "memory/vaddr.h"
 
 #include <stdlib.h>
 #include <readline/readline.h>
@@ -61,7 +62,7 @@ static int cmd_si(char *args)
       if (!isdigit(val[i]))
       {
         printf("Invalid expression: %s is not a number\n", val);
-        return -1;
+        return 0;
       }
     }
 
@@ -75,7 +76,6 @@ static int cmd_si(char *args)
 
 static int cmd_info(char *args)
 {
-  printf("info command\n");
 
   if (strcmp(args, "r") == 0)
     isa_reg_display();
@@ -85,8 +85,46 @@ static int cmd_info(char *args)
 
 static int cmd_x(char *args)
 {
-  printf("x command\n");
-  return -1;
+  if (args == NULL)
+  {
+    printf("Invalid expression: None arguments\n");
+    return 0;
+  }
+
+  //parse the first argument (num of the 4_bytes for displaying)
+  char *args1 = strtok(NULL, " ");
+  char *t;
+  for (t = args1; *t != '\0'; t++)
+  {
+    if (*t < '0' || *t > '9')
+    {
+      puts("N should be a decimal number!");
+      return 0;
+    }
+  }
+
+  int32_t num_4bytes = (int32_t)strtol(args1, NULL, 10);
+
+  //parse the second argument, the actual addr for the memory data
+  char *args2 = args + strlen(args1) + 1;
+  bool success = true;
+  uint32_t addr = expr(args2, &success);
+  if (!success)
+  {
+    printf("invalid addr expression: '%s'\n", args2);
+  }
+  else
+  {
+    // printf("addr 0x%x\n", addr);
+    for (int i = 0; i < num_4bytes; ++i)
+    {
+      uint32_t val = vaddr_read(addr + 4 * i, 4);
+      printf("0x%x ", val);
+    }
+    printf("\n");
+  }
+
+  return 0;
 }
 
 static struct
