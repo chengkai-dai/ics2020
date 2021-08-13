@@ -279,13 +279,15 @@ static word_t eval(int s, int e, bool *success)
     {
       //val = get_varible(tokens[s].str, success);
       printf("eval ERROR: Eval for VAR is not implemented.\n");
-      assert(0);
+      *success = false;
+      return 0;
     }
     else if (tokens[s].type == REG)
     {
       //val = get_varible(tokens[s].str, success);
       printf("eval ERROR: Eval for REG is not implemented.\n");
-      assert(0);
+      *success = false;
+      return 0;
     }
 
     else if (tokens[s].type == HEX)
@@ -328,7 +330,8 @@ static word_t eval(int s, int e, bool *success)
           val = val1 * val2;
           break;
         case '/':
-          if(val2==0){
+          if (val2 == 0)
+          {
             printf("eval ERROR: Divided by 0.\n");
             *success = false;
             return 0;
