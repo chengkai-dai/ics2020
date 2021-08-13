@@ -262,7 +262,6 @@ static int dominant_op(int s, int e)
 
 static word_t eval(int s, int e, bool *success)
 {
-  printf("s %d e %d\n",s,e);
   word_t val = 0;
   if (s > e)
   {
@@ -312,7 +311,6 @@ static word_t eval(int s, int e, bool *success)
       else
       {
         int op = dominant_op(s, e);
-        printf("dominant_op %d\n",op);
 
         // op = the position of dominant operator in the token expression;
         word_t val1 = eval(s, op - 1, success);
@@ -330,6 +328,11 @@ static word_t eval(int s, int e, bool *success)
           val = val1 * val2;
           break;
         case '/':
+          if(val2==0){
+            printf("eval ERROR: Divided by 0.\n");
+            *success = false;
+            return 0;
+          }
           val = val1 / val2;
           break;
         case TK_EQ:
@@ -338,7 +341,8 @@ static word_t eval(int s, int e, bool *success)
 
         default:
           printf("eval ERROR: Eval for %d is not implemented.\n", tokens[op].type);
-          assert(0);
+          *success = false;
+          return 0;
         }
       }
     }
