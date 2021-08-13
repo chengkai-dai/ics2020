@@ -195,150 +195,152 @@ static bool valid_parentheses(int s, int e)
 
 static int dominant_op(int s, int e)
 {
-	int type_stack[e - s + 2];
-	int idx_stack[e - s + 2];
+  int type_stack[e - s + 2];
+  int idx_stack[e - s + 2];
 
-	int top = 0;
-	for (int i = s; i <= e; i++)
-	{
-		char ch;
-		if (tokens[i].type == ')')
-			ch = '(';
-		else
-			ch = 0;
+  int top = 0;
+  for (int i = s; i <= e; i++)
+  {
+    char ch;
+    if (tokens[i].type == ')')
+      ch = '(';
+    else
+      ch = 0;
 
-		if (ch)
-		{
-			for (int j = top - 1; j >= 0; --j)
-			{
-				bool close = (type_stack[j] == '(');
-				type_stack[j] = 0;
-				idx_stack[j] = INT32_MIN;
-				top--;
-				if (close)
-				{
-					break;
-				}
-			}
-		}
-		else
-		{
-			type_stack[top] = tokens[i].type;
-			idx_stack[top] = i;
-			top++;
-		}
-	}
-
-	for (int i = top - 1; i >= 0; --i)
-	{
-		if (type_stack[i] == '+' || type_stack[i] == '-')
-
-			return idx_stack[i];
-	}
-
-	for (int i = top - 1; i >= 0; --i)
-	{
-		if (type_stack[i] == '*' || type_stack[i] == '/')
-
-			return idx_stack[i];
-	}
+    if (ch)
+    {
+      for (int j = top - 1; j >= 0; --j)
+      {
+        bool close = (type_stack[j] == '(');
+        type_stack[j] = 0;
+        idx_stack[j] = INT32_MIN;
+        top--;
+        if (close)
+        {
+          break;
+        }
+      }
+    }
+    else
+    {
+      type_stack[top] = tokens[i].type;
+      idx_stack[top] = i;
+      top++;
+    }
+  }
 
   for (int i = top - 1; i >= 0; --i)
-	{
-		if (type_stack[i] == TK_EQ)
+  {
+    if (type_stack[i] == '+' || type_stack[i] == '-')
 
-			return idx_stack[i];
-	}
+      return idx_stack[i];
+  }
 
-	return 0;
+  for (int i = top - 1; i >= 0; --i)
+  {
+    if (type_stack[i] == '*' || type_stack[i] == '/')
+
+      return idx_stack[i];
+  }
+
+  for (int i = top - 1; i >= 0; --i)
+  {
+    if (type_stack[i] == TK_EQ)
+
+      return idx_stack[i];
+  }
+
+  return 0;
 }
 
 static word_t eval(int s, int e, bool *success)
 {
-	word_t val = 0;
-	if (s > e)
-	{
-		printf("eval ERROR: start position is greater than end\n");
-		*success = false;
-		return 0;
-	}
-	else if (s == e)
-	{
-		if (tokens[s].type == NUM){
-			val = atoi(tokens[s].str);
-		}
-		else if (tokens[s].type == VAR)
-		{
-			//val = get_varible(tokens[s].str, success);
+  word_t val = 0;
+  if (s > e)
+  {
+    printf("eval ERROR: start position is greater than end\n");
+    *success = false;
+    return 0;
+  }
+  else if (s == e)
+  {
+    if (tokens[s].type == NUM)
+    {
+      val = atoi(tokens[s].str);
+    }
+    else if (tokens[s].type == VAR)
+    {
+      //val = get_varible(tokens[s].str, success);
       printf("eval ERROR: Eval for VAR is not implemented.\n");
       assert(0);
-		}
+    }
     else if (tokens[s].type == REG)
-		{
-			//val = get_varible(tokens[s].str, success);
+    {
+      //val = get_varible(tokens[s].str, success);
       printf("eval ERROR: Eval for REG is not implemented.\n");
       assert(0);
-		}
+    }
 
-		else if (tokens[s].type == HEX){
-			val = (word_t)strtoul(tokens[s].str, NULL, 0);
+    else if (tokens[s].type == HEX)
+    {
+      val = (word_t)strtoul(tokens[s].str, NULL, 0);
+    }
+  }
+  else
+  {
 
-		}
+    if (tokens[s].type == '-')
+    {
+      val = -1 * eval(s + 1, e, success);
+    }
 
-    else if (tokens[s].type == '-'){
-			val = -1*eval(s+1, e, success);
+    bool within_p = check_parentheses(s, e);
 
-		}
-	}
-	else
-	{
-		bool within_p = check_parentheses(s, e);
-
-		if (within_p == true)
-			val = eval(s + 1, e - 1, success);
-		else
-		{
-			int op = dominant_op(s, e);
-			// op = the position of dominant operator in the token expression;
-			word_t val1 = eval(s, op - 1, success);
-			word_t val2 = eval(op + 1, e, success);
-			// val2 = eval(op + 1, q);
-			switch (tokens[op].type)
-			{
-			case '+':
-				return val1 + val2;
-				break;
-			case '-':
-				return val1 - val2;
-				break;
-			case '*':
-				return val1 * val2;
-				break;
-			case '/':
-				return val1 / val2;
+    if (within_p == true)
+      val = eval(s + 1, e - 1, success);
+    else
+    {
+      int op = dominant_op(s, e);
+      // op = the position of dominant operator in the token expression;
+      word_t val1 = eval(s, op - 1, success);
+      word_t val2 = eval(op + 1, e, success);
+      // val2 = eval(op + 1, q);
+      switch (tokens[op].type)
+      {
+      case '+':
+        val = val1 + val2;
+        break;
+      case '-':
+        val = val1 - val2;
+        break;
+      case '*':
+        val = val1 * val2;
+        break;
+      case '/':
+        val = val1 / val2;
+        break;
       case TK_EQ:
-				return val1 == val2;
-				break;
+        val = (val1 == val2);
+        break;
 
-			default:
-				printf("eval ERROR: Eval for %d is not implemented.\n",tokens[op].type);
-				assert(0);
-			}
-		}
-	}
-	return val;
+      default:
+        printf("eval ERROR: Eval for %d is not implemented.\n", tokens[op].type);
+        assert(0);
+      }
+    }
+  }
+  return val;
 }
-
 
 word_t expr(char *e, bool *success)
 {
-  if (!make_token(e) && valid_parentheses(0, nr_token - 1) )
+  if (!make_token(e) && valid_parentheses(0, nr_token - 1))
   {
     *success = false;
     return 0;
   }
 
-  word_t val=eval(0, nr_token - 1, success);
+  word_t val = eval(0, nr_token - 1, success);
 
   // /* TODO: Insert codes to evaluate the expression. */
   // TODO();
