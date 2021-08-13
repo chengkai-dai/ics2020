@@ -286,6 +286,12 @@ static word_t eval(int s, int e, bool *success)
     {
       //val = get_varible(tokens[s].str, success);
       printf("eval ERROR: Eval for REG is not implemented.\n");
+      char* reg=tokens[s].str+1;
+      printf("REG name %s\n",reg);
+
+      // val = isa_reg_str2val(reg, success);
+      // if (*success == false)
+      //   ;
       *success = false;
       return 0;
     }
