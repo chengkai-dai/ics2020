@@ -305,6 +305,8 @@ static word_t eval(int s, int e, bool *success)
       else
       {
         int op = dominant_op(s, e);
+        printf("dominant_op %d\n",op);
+
         // op = the position of dominant operator in the token expression;
         word_t val1 = eval(s, op - 1, success);
         word_t val2 = eval(op + 1, e, success);
