@@ -34,7 +34,7 @@ static struct rule
     {"\\+", '+'},      // plus
     {"==", TK_EQ},     // equal
     {"0[xX][0-9a-fA-F]+", HEX},
-    {"\\$[a-fA-F]+", REG},
+    {"\\$[a-zA-Z]+", REG},
     {"[0-9]{1,10}", NUM},
     {"-", '-'},
     {"\\*", '*'},
