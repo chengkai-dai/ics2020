@@ -22,6 +22,7 @@ static inline def_EHelper(store) {
 
 static inline void fetch_decode_exec(DecodeExecState *s) {
   s->isa.instr.val = instr_fetch(&s->seq_pc, 4);
+  printf("s->isa.instr.val 0x%x\n",s->isa.instr.val);
   Assert(s->isa.instr.i.opcode1_0 == 0x3, "Invalid instruction");
   switch (s->isa.instr.i.opcode6_2) {
     IDEX (0b00000, I, load)
@@ -40,7 +41,6 @@ vaddr_t isa_exec_once() {
   DecodeExecState s;
   s.is_jmp = 0;
   s.seq_pc = cpu.pc;
-  printf("current pc 0x%lx\n",cpu.pc);
 
   fetch_decode_exec(&s);
   update_pc(&s);
