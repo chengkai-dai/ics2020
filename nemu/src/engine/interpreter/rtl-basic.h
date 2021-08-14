@@ -197,7 +197,6 @@ static inline def_rtl(auipc, rtlreg_t *dest, const sword_t imm)
 static inline def_rtl(jal, rtlreg_t *dest, const sword_t imm)
 {
   *dest = s->seq_pc;
-  printf("target 0x%lx\n",imm + s->seq_pc-4);
   rtl_j(s, imm + s->seq_pc-4);
 }
 
