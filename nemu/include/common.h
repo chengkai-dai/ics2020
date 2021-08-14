@@ -33,6 +33,18 @@ typedef int32_t sword_t;
 #define FMT_WORD "0x%08x"
 #endif
 
+
+inline word_t instr_sign_ext(word_t x)
+{
+// #ifdef ISA64
+//   return (int64_t)x;
+// #else
+//   return (int32_t)x;
+// #endif
+
+    return (sword_t)x;
+}
+
 typedef word_t rtlreg_t;
 typedef word_t vaddr_t;
 typedef uint32_t paddr_t;

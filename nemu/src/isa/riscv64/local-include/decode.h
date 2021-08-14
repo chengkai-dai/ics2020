@@ -1,14 +1,6 @@
 #include <cpu/exec.h>
 #include "rtl.h"
 
-inline word_t instr_sign_ext(word_t x)
-{
-#ifdef ISA64
-  return (int64_t)x;
-#else
-  return (int32_t)x;
-#endif
-}
 // decode operand helper
 #define def_DopHelper(name) \
   void concat(decode_op_, name)(DecodeExecState * s, Operand * op, word_t val, bool load_val)

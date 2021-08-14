@@ -38,6 +38,7 @@ static inline void update_pc(DecodeExecState *s) {
   cpu.pc = (s->is_jmp ? s->jmp_pc : s->seq_pc);
 }
 
+
 #ifdef DEBUG
 #define print_asm(...) \
   do { \

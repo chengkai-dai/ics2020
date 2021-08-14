@@ -30,6 +30,13 @@ static inline def_EHelper(jal)
   print_asm_template2(jal);
 }
 
+static inline def_EHelper(jalr)
+{
+  rtl_jalr(s,ddest,dsrc1,id_src2->imm);
+  print_asm_template3(jalr);
+}
+
+
 static inline def_EHelper(store)
 {
   switch (s->isa.instr.s.funct3)
@@ -62,7 +69,7 @@ static inline void fetch_decode_exec(DecodeExecState *s)
     IDEX(0b00101, U, auipc)
     IDEX(0b00100, I, op_imm)
     IDEX(0b11011, J, jal)
-
+    IDEX(0b11001, I, jalr)
     EX(0b11010, nemu_trap)
   default:
     exec_inv(s);

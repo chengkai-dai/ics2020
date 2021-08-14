@@ -3,7 +3,6 @@
 
 #include "c_op.h"
 #include <memory/vaddr.h>
-
 /* RTL basic instructions */
 
 #define def_rtl_compute_reg(name)                                                         \
@@ -198,6 +197,13 @@ static inline def_rtl(jal, rtlreg_t *dest, const sword_t imm)
 {
   *dest = s->seq_pc;
   rtl_j(s, imm + s->seq_pc - 4);
+}
+
+static inline def_rtl(jalr, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
+{
+  vaddr_t target = (instr_sign_ext(imm) + *src1) & (~1);
+  *dest = s->seq_pc;
+  rtl_j(s, target);
 }
 
 static inline def_rtl(jrelop, uint32_t relop,
