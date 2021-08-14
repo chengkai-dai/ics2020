@@ -21,7 +21,6 @@ static inline def_EHelper(store) {
 }
 
 static inline def_EHelper(op_imm) {
-  printf("op_imm 0x%x\n",s->isa.instr.i.funct3);
   switch (s->isa.instr.i.funct3) {
     EXW  (0, add, 8)
     default: exec_inv(s);
