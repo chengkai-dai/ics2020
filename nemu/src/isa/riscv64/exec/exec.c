@@ -21,7 +21,7 @@ static inline def_EHelper(load)
 static inline def_EHelper(auipc)
 {
   rtl_auipc(s,ddest,id_src1->imm);
-  printf("reg_d(id_dest->reg) 0x%lx\n",reg_d(id_dest->reg));
+  print_asm_template2(auipc);
 }
 
 static inline def_EHelper(store)
