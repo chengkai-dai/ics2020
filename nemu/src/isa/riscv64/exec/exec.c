@@ -27,8 +27,6 @@ static inline def_EHelper(auipc)
 static inline def_EHelper(jal)
 {
   rtl_jal(s,ddest,id_src1->imm);
-  printf("jump 0x%lx\n",id_src1->imm);
-  printf("pc 0x%lx\n",s->jmp_pc);
   print_asm_template2(jal);
 }
 
