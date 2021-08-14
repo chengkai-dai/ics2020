@@ -20,6 +20,14 @@ static inline def_EHelper(store) {
   }
 }
 
+static inline def_EHelper(op_imm) {
+  printf("op_imm\n");
+  switch (s->isa.instr.i.funct3) {
+    EXW  (3, ld, 8)
+    default: exec_inv(s);
+  }
+}
+
 static inline void fetch_decode_exec(DecodeExecState *s) {
   s->isa.instr.val = instr_fetch(&s->seq_pc, 4);
   printf("s->isa.instr.i.opcode1_0 0x%x\n",s->isa.instr.i.opcode1_0);
@@ -30,6 +38,7 @@ static inline void fetch_decode_exec(DecodeExecState *s) {
     IDEX (0b00000, I, load)
     IDEX (0b01000, S, store)
     IDEX (0b01101, U, lui)
+    IDEX (0b00100, I, op_imm)
     EX   (0b11010, nemu_trap)
     default: exec_inv(s);
   }
