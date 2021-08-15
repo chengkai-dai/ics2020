@@ -1,0 +1,57 @@
+
+/home/daichengkai/ics2020/am-kernels/tests/cpu-tests/build/sum-riscv64-nemu.elf:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000080100000 <_start>:
+    80100000:	00000413          	li	s0,0
+    80100004:	00009117          	auipc	sp,0x9
+    80100008:	ffc10113          	addi	sp,sp,-4 # 80109000 <_end>
+    8010000c:	07c000ef          	jal	ra,80100088 <_trm_init>
+
+0000000080100010 <check>:
+    80100010:	00050463          	beqz	a0,80100018 <check+0x8>
+    80100014:	00008067          	ret
+    80100018:	ff010113          	addi	sp,sp,-16
+    8010001c:	00100513          	li	a0,1
+    80100020:	00113423          	sd	ra,8(sp)
+    80100024:	058000ef          	jal	ra,8010007c <halt>
+
+0000000080100028 <main>:
+    80100028:	fe010113          	addi	sp,sp,-32
+    8010002c:	00113c23          	sd	ra,24(sp)
+    80100030:	00012623          	sw	zero,12(sp)
+    80100034:	00100793          	li	a5,1
+    80100038:	06500693          	li	a3,101
+    8010003c:	00c12703          	lw	a4,12(sp)
+    80100040:	00f7073b          	addw	a4,a4,a5
+    80100044:	00e12623          	sw	a4,12(sp)
+    80100048:	0017879b          	addiw	a5,a5,1
+    8010004c:	fed798e3          	bne	a5,a3,8010003c <main+0x14>
+    80100050:	00c12503          	lw	a0,12(sp)
+    80100054:	000017b7          	lui	a5,0x1
+    80100058:	3ba78793          	addi	a5,a5,954 # 13ba <_pmem_start-0x7fffec46>
+    8010005c:	0005051b          	sext.w	a0,a0
+    80100060:	40f50533          	sub	a0,a0,a5
+    80100064:	00153513          	seqz	a0,a0
+    80100068:	fa9ff0ef          	jal	ra,80100010 <check>
+    8010006c:	01813083          	ld	ra,24(sp)
+    80100070:	00000513          	li	a0,0
+    80100074:	02010113          	addi	sp,sp,32
+    80100078:	00008067          	ret
+
+000000008010007c <halt>:
+    8010007c:	00050513          	mv	a0,a0
+    80100080:	0000006b          	0x6b
+    80100084:	0000006f          	j	80100084 <halt+0x8>
+
+0000000080100088 <_trm_init>:
+    80100088:	ff010113          	addi	sp,sp,-16
+    8010008c:	00000517          	auipc	a0,0x0
+    80100090:	01c50513          	addi	a0,a0,28 # 801000a8 <_etext>
+    80100094:	00113423          	sd	ra,8(sp)
+    80100098:	f91ff0ef          	jal	ra,80100028 <main>
+    8010009c:	00050513          	mv	a0,a0
+    801000a0:	0000006b          	0x6b
+    801000a4:	0000006f          	j	801000a4 <_trm_init+0x1c>

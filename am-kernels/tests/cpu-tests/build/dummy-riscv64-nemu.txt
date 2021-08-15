@@ -1,0 +1,25 @@
+
+/home/daichengkai/ics2020/am-kernels/tests/cpu-tests/build/dummy-riscv64-nemu.elf:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000080100000 <_start>:
+    80100000:	00000413          	li	s0,0
+    80100004:	00009117          	auipc	sp,0x9
+    80100008:	ffc10113          	addi	sp,sp,-4 # 80109000 <_end>
+    8010000c:	00c000ef          	jal	ra,80100018 <_trm_init>
+
+0000000080100010 <main>:
+    80100010:	00000513          	li	a0,0
+    80100014:	00008067          	ret
+
+0000000080100018 <_trm_init>:
+    80100018:	ff010113          	addi	sp,sp,-16
+    8010001c:	00000517          	auipc	a0,0x0
+    80100020:	01c50513          	addi	a0,a0,28 # 80100038 <_etext>
+    80100024:	00113423          	sd	ra,8(sp)
+    80100028:	fe9ff0ef          	jal	ra,80100010 <main>
+    8010002c:	00050513          	mv	a0,a0
+    80100030:	0000006b          	0x6b
+    80100034:	0000006f          	j	80100034 <_trm_init+0x1c>
