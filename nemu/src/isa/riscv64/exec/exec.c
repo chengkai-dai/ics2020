@@ -51,6 +51,16 @@ static inline def_EHelper(op_imm)
 {
   switch (s->isa.instr.i.funct3)
   {
+    EXW(0, addi, 8)
+  default:
+    exec_inv(s);
+  }
+}
+
+static inline def_EHelper(op_r)
+{
+  switch (s->isa.instr.r.funct3)
+  {
     EXW(0, add, 8)
   default:
     exec_inv(s);
@@ -68,6 +78,7 @@ static inline void fetch_decode_exec(DecodeExecState *s)
     IDEX(0b01101, U, lui)
     IDEX(0b00101, U, auipc)
     IDEX(0b00100, I, op_imm)
+    IDEX(0b01100, R, op_r)
     IDEX(0b11011, J, jal)
     IDEX(0b11001, I, jalr)
     EX(0b11010, nemu_trap)
