@@ -1,28 +1,32 @@
-[1;34m[src/monitor/monitor.c,45,load_img] The image is /home/daichengkai/ics2020/am-kernels/tests/cpu-tests/build/pascal-riscv64-nemu.bin[0m
+[1;34m[src/monitor/monitor.c,45,load_img] The image is /home/daichengkai/ics2020/am-kernels/tests/cpu-tests/build/prime-riscv64-nemu.bin[0m
 [1;34m[src/monitor/monitor.c,23,welcome] Debug: [1;32mON[0m[0m
 [1;34m[src/monitor/monitor.c,24,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
 [1;34m[src/monitor/monitor.c,31,welcome] Build time: 23:37:48, Aug 14 2021[0m
 0x0000000080100000:   13 04 00 00                           add  $0,0,s0
 0x0000000080100004:   17 91 00 00                           auipc  0x9,sp
 0x0000000080100008:   13 01 c1 ff                           add  sp,-4,sp
-0x000000008010000c:   ef 00 40 10                           jal  260,ra
-0x0000000080100110:   13 01 01 ff                           add  sp,-16,sp
-0x0000000080100114:   17 05 00 00                           auipc  0x0,a0
-0x0000000080100118:   13 05 c5 01                           add  a0,28,a0
-0x000000008010011c:   23 34 11 00                           sd  8(sp),ra
-0x0000000080100120:   ef f0 9f f0                           jal  -248,ra
-0x0000000080100028:   13 01 01 fe                           add  sp,-32,sp
-0x000000008010002c:   23 3c 11 00                           sd  24(sp),ra
-0x0000000080100030:   23 38 81 00                           sd  16(sp),s0
-0x0000000080100034:   23 34 91 00                           sd  8(sp),s1
-0x0000000080100038:   23 30 21 01                           sd  0(sp),s2
-0x000000008010003c:   17 05 00 00                           auipc  0x0,a0
-0x0000000080100040:   13 05 c5 17                           add  a0,380,a0
-0x0000000080100044:   93 07 10 00                           add  $0,1,a5
-0x0000000080100048:   23 22 f5 00 23 22 f5 00 23 20 f5 00               invalid opcode
-[1;34m[src/monitor/cpu-exec.c,109,cpu_exec] nemu: [1;31mABORT[0m at pc = 0x0000000080100048
+0x000000008010000c:   ef 00 80 0b                           jal  184,ra
+0x00000000801000c4:   13 01 01 ff                           add  sp,-16,sp
+0x00000000801000c8:   17 05 00 00                           auipc  0x0,a0
+0x00000000801000cc:   13 05 05 02                           add  a0,32,a0
+0x00000000801000d0:   23 34 11 00                           sd  8(sp),ra
+0x00000000801000d4:   ef f0 5f f5                           jal  -172,ra
+0x0000000080100028:   13 01 01 fd                           add  sp,-48,sp
+0x000000008010002c:   23 30 81 02                           sd  32(sp),s0
+0x0000000080100030:   23 3c 91 00                           sd  24(sp),s1
+0x0000000080100034:   23 38 21 01                           sd  16(sp),s2
+0x0000000080100038:   23 34 31 01                           sd  8(sp),s3
+0x000000008010003c:   23 34 11 02                           sd  40(sp),ra
+0x0000000080100040:   93 04 00 00                           add  $0,0,s1
+0x0000000080100044:   13 04 50 06                           add  $0,101,s0
+0x0000000080100048:   97 09 00 00                           auipc  0x0,s3
+0x000000008010004c:   93 89 89 0a                           add  s3,168,s3
+0x0000000080100050:   13 09 70 09                           add  $0,151,s2
+0x0000000080100054:   93 07 20 00                           add  $0,2,a5
+0x0000000080100058:   3b 67 f4 02 3b 67 f4 02 9b 87 17 00               invalid opcode
+[1;34m[src/monitor/cpu-exec.c,109,cpu_exec] nemu: [1;31mABORT[0m at pc = 0x0000000080100058
 
 [0m
-[1;34m[src/monitor/cpu-exec.c,38,monitor_statistic] total guest instructions = 18[0m
+[1;34m[src/monitor/cpu-exec.c,38,monitor_statistic] total guest instructions = 22[0m
 [1;34m[src/monitor/cpu-exec.c,39,monitor_statistic] host time spent = 1 ms[0m
-[1;34m[src/monitor/cpu-exec.c,40,monitor_statistic] simulation frequency = 18000 instr/s[0m
+[1;34m[src/monitor/cpu-exec.c,40,monitor_statistic] simulation frequency = 22000 instr/s[0m
