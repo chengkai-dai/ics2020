@@ -2,7 +2,7 @@
 #include <monitor/monitor.h>
 #include <monitor/difftest.h>
 #include "../local-include/reg.h"
-
+#include <stdlib.h>
 def_EHelper(inv) {
   /* invalid opcode */
 
@@ -20,7 +20,7 @@ def_EHelper(inv) {
 
   print_asm("invalid opcode");
 
-  assert(0);
+  exit(-1);
 
 }
 
