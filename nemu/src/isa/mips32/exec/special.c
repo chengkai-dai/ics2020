@@ -20,7 +20,6 @@ def_EHelper(inv) {
 
   print_asm("invalid opcode");
 
-  assert(0);
 }
 
 def_EHelper(nemu_trap) {
