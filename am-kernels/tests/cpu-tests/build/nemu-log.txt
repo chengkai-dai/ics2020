@@ -1,31 +1,36 @@
-[1;34m[src/monitor/monitor.c,45,load_img] The image is /home/daichengkai/ics2020/am-kernels/tests/cpu-tests/build/recursion-riscv64-nemu.bin[0m
+[1;34m[src/monitor/monitor.c,45,load_img] The image is /home/daichengkai/ics2020/am-kernels/tests/cpu-tests/build/select-sort-riscv64-nemu.bin[0m
 [1;34m[src/monitor/monitor.c,23,welcome] Debug: [1;32mON[0m[0m
 [1;34m[src/monitor/monitor.c,24,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
 [1;34m[src/monitor/monitor.c,31,welcome] Build time: 23:37:48, Aug 14 2021[0m
 0x0000000080100000:   13 04 00 00                           add  $0,0,s0
 0x0000000080100004:   17 91 00 00                           auipc  0x9,sp
 0x0000000080100008:   13 01 c1 ff                           add  sp,-4,sp
-0x000000008010000c:   ef 00 80 24                           jal  584,ra
-0x0000000080100254:   13 01 01 ff                           add  sp,-16,sp
-0x0000000080100258:   17 05 00 00                           auipc  0x0,a0
-0x000000008010025c:   13 05 05 02                           add  a0,32,a0
-0x0000000080100260:   23 34 11 00                           sd  8(sp),ra
-0x0000000080100264:   ef f0 5f f6                           jal  -156,ra
-0x00000000801001c8:   13 01 01 ff                           add  sp,-16,sp
-0x00000000801001cc:   37 45 00 00                           lui  0x4,a0
-0x00000000801001d0:   23 34 11 00                           sd  8(sp),ra
-0x00000000801001d4:   23 30 81 00                           sd  0(sp),s0
-0x00000000801001d8:   93 05 00 00                           add  $0,0,a1
-0x00000000801001dc:   97 07 00 00                           auipc  0x0,a5
-0x00000000801001e0:   83 b7 47 0b                           ld  180(a5),a5
-0x00000000801001e4:   13 05 35 82                           add  a0,-2013,a0
-0x00000000801001e8:   e7 80 07 00                           jalr  a5,0,ra
-0x0000000080100010:   97 07 00 00                           auipc  0x0,a5
-0x0000000080100014:   93 87 07 2a                           add  a5,672,a5
-0x0000000080100018:   03 a7 07 00 03 a7 07 00 63 54 b7 00               invalid opcode
-[1;34m[src/monitor/cpu-exec.c,109,cpu_exec] nemu: [1;31mABORT[0m at pc = 0x0000000080100018
+0x000000008010000c:   ef 00 c0 19                           jal  412,ra
+0x00000000801001a8:   13 01 01 ff                           add  sp,-16,sp
+0x00000000801001ac:   17 05 00 00                           auipc  0x0,a0
+0x00000000801001b0:   13 05 c5 01                           add  a0,28,a0
+0x00000000801001b4:   23 34 11 00                           sd  8(sp),ra
+0x00000000801001b8:   ef f0 1f e7                           jal  -400,ra
+0x0000000080100028:   13 01 01 fc                           add  sp,-64,sp
+0x000000008010002c:   23 38 81 02                           sd  48(sp),s0
+0x0000000080100030:   17 04 00 00                           auipc  0x0,s0
+0x0000000080100034:   13 04 44 1a                           add  s0,420,s0
+0x0000000080100038:   23 38 41 01                           sd  16(sp),s4
+0x000000008010003c:   23 3c 11 02                           sd  56(sp),ra
+0x0000000080100040:   23 34 91 02                           sd  40(sp),s1
+0x0000000080100044:   23 30 21 03                           sd  32(sp),s2
+0x0000000080100048:   23 3c 31 01                           sd  24(sp),s3
+0x000000008010004c:   23 34 51 01                           sd  8(sp),s5
+0x0000000080100050:   93 08 04 00                           add  s0,0,a7
+0x0000000080100054:   13 08 00 00                           add  $0,0,a6
+0x0000000080100058:   17 0a 00 00                           auipc  0x0,s4
+0x000000008010005c:   13 0a 8a 17                           add  s4,376,s4
+0x0000000080100060:   13 05 40 01                           add  $0,20,a0
+0x0000000080100064:   13 0e 30 01                           add  $0,19,t3
+0x0000000080100068:   03 a3 c8 ff 03 a3 c8 ff 93 05 08 00               invalid opcode
+[1;34m[src/monitor/cpu-exec.c,109,cpu_exec] nemu: [1;31mABORT[0m at pc = 0x0000000080100068
 
 [0m
-[1;34m[src/monitor/cpu-exec.c,38,monitor_statistic] total guest instructions = 21[0m
-[1;34m[src/monitor/cpu-exec.c,39,monitor_statistic] host time spent = 2 ms[0m
-[1;34m[src/monitor/cpu-exec.c,40,monitor_statistic] simulation frequency = 10500 instr/s[0m
+[1;34m[src/monitor/cpu-exec.c,38,monitor_statistic] total guest instructions = 26[0m
+[1;34m[src/monitor/cpu-exec.c,39,monitor_statistic] host time spent = 1 ms[0m
+[1;34m[src/monitor/cpu-exec.c,40,monitor_statistic] simulation frequency = 26000 instr/s[0m
