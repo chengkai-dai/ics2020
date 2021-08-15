@@ -37,4 +37,13 @@ static inline def_rtl(sltiu, rtlreg_t *dest, const rtlreg_t *src1, const sword_t
     *dest = 0;
 }
 
+static inline def_rtl(beq, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
+{
+  if (*src1 == *dest)
+  {
+    rtl_j(s, imm + s->seq_pc - 4);
+  }
+
+}
+
 #endif
