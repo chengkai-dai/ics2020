@@ -19,6 +19,8 @@ def_EHelper(inv) {
   rtl_exit(NEMU_ABORT, cpu.pc, -1);
 
   print_asm("invalid opcode");
+
+  assert(0);
 }
 
 def_EHelper(nemu_trap) {
