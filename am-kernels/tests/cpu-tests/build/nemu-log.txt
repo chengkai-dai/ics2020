@@ -1,33 +1,31 @@
-[1;34m[src/monitor/monitor.c,45,load_img] The image is /home/daichengkai/ics2020/am-kernels/tests/cpu-tests/build/quick-sort-riscv64-nemu.bin[0m
+[1;34m[src/monitor/monitor.c,45,load_img] The image is /home/daichengkai/ics2020/am-kernels/tests/cpu-tests/build/recursion-riscv64-nemu.bin[0m
 [1;34m[src/monitor/monitor.c,23,welcome] Debug: [1;32mON[0m[0m
 [1;34m[src/monitor/monitor.c,24,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
 [1;34m[src/monitor/monitor.c,31,welcome] Build time: 23:37:48, Aug 14 2021[0m
 0x0000000080100000:   13 04 00 00                           add  $0,0,s0
 0x0000000080100004:   17 91 00 00                           auipc  0x9,sp
 0x0000000080100008:   13 01 c1 ff                           add  sp,-4,sp
-0x000000008010000c:   ef 00 c0 20                           jal  524,ra
-0x0000000080100218:   13 01 01 ff                           add  sp,-16,sp
-0x000000008010021c:   17 05 00 00                           auipc  0x0,a0
-0x0000000080100220:   13 05 c5 01                           add  a0,28,a0
-0x0000000080100224:   23 34 11 00                           sd  8(sp),ra
-0x0000000080100228:   ef f0 5f f2                           jal  -220,ra
-0x000000008010014c:   13 01 01 fd                           add  sp,-48,sp
-0x0000000080100150:   17 05 00 00                           auipc  0x0,a0
-0x0000000080100154:   13 05 05 0f                           add  a0,240,a0
-0x0000000080100158:   23 3c 91 00                           sd  24(sp),s1
-0x000000008010015c:   13 06 30 01                           add  $0,19,a2
-0x0000000080100160:   93 04 05 00                           add  a0,0,s1
-0x0000000080100164:   93 05 00 00                           add  $0,0,a1
-0x0000000080100168:   23 30 81 02                           sd  32(sp),s0
-0x000000008010016c:   23 38 21 01                           sd  16(sp),s2
-0x0000000080100170:   23 34 31 01                           sd  8(sp),s3
-0x0000000080100174:   23 34 11 02                           sd  40(sp),ra
-0x0000000080100178:   13 89 04 00                           add  s1,0,s2
-0x000000008010017c:   ef f0 5f f6                           jal  -156,ra
-0x00000000801000e0:   63 d4 c5 06 63 d4 c5 06 13 01 01 fe               invalid opcode
-[1;34m[src/monitor/cpu-exec.c,109,cpu_exec] nemu: [1;31mABORT[0m at pc = 0x00000000801000e0
+0x000000008010000c:   ef 00 80 24                           jal  584,ra
+0x0000000080100254:   13 01 01 ff                           add  sp,-16,sp
+0x0000000080100258:   17 05 00 00                           auipc  0x0,a0
+0x000000008010025c:   13 05 05 02                           add  a0,32,a0
+0x0000000080100260:   23 34 11 00                           sd  8(sp),ra
+0x0000000080100264:   ef f0 5f f6                           jal  -156,ra
+0x00000000801001c8:   13 01 01 ff                           add  sp,-16,sp
+0x00000000801001cc:   37 45 00 00                           lui  0x4,a0
+0x00000000801001d0:   23 34 11 00                           sd  8(sp),ra
+0x00000000801001d4:   23 30 81 00                           sd  0(sp),s0
+0x00000000801001d8:   93 05 00 00                           add  $0,0,a1
+0x00000000801001dc:   97 07 00 00                           auipc  0x0,a5
+0x00000000801001e0:   83 b7 47 0b                           ld  180(a5),a5
+0x00000000801001e4:   13 05 35 82                           add  a0,-2013,a0
+0x00000000801001e8:   e7 80 07 00                           jalr  a5,0,ra
+0x0000000080100010:   97 07 00 00                           auipc  0x0,a5
+0x0000000080100014:   93 87 07 2a                           add  a5,672,a5
+0x0000000080100018:   03 a7 07 00 03 a7 07 00 63 54 b7 00               invalid opcode
+[1;34m[src/monitor/cpu-exec.c,109,cpu_exec] nemu: [1;31mABORT[0m at pc = 0x0000000080100018
 
 [0m
-[1;34m[src/monitor/cpu-exec.c,38,monitor_statistic] total guest instructions = 23[0m
-[1;34m[src/monitor/cpu-exec.c,39,monitor_statistic] host time spent = 3 ms[0m
-[1;34m[src/monitor/cpu-exec.c,40,monitor_statistic] simulation frequency = 7666 instr/s[0m
+[1;34m[src/monitor/cpu-exec.c,38,monitor_statistic] total guest instructions = 21[0m
+[1;34m[src/monitor/cpu-exec.c,39,monitor_statistic] host time spent = 2 ms[0m
+[1;34m[src/monitor/cpu-exec.c,40,monitor_statistic] simulation frequency = 10500 instr/s[0m
