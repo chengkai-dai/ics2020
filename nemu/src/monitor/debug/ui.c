@@ -79,7 +79,16 @@ static int cmd_info(char *args)
 
   if (strcmp(args, "r") == 0)
     isa_reg_display();
-
+  else
+  {
+    word_t return_val;
+    bool success;
+    return_val = isa_reg_str2val(args, &success);
+    if (success == true)
+      printf("%s 0x%lx\n", args, return_val);
+    else
+      printf("%s is not a valid expression\n", args);
+  }
   return 0;
 }
 
@@ -140,7 +149,7 @@ static int cmd_w(char *args)
     return 0;
   }
   printf("Watch Point Setting is under construction.\n");
-  val=0;
+  val = 0;
   return val;
 }
 
