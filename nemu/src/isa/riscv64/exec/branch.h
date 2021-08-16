@@ -11,3 +11,10 @@ static inline def_EHelper(bne)
 
     print_asm_template3(bne);
 }
+
+static inline def_EHelper(bge)
+{
+    rtl_bge(s, ddest, dsrc1, id_src2->imm);
+
+    print_asm_template3(bge);
+}
