@@ -72,9 +72,9 @@ static inline def_DHelper(B)
   printf("s->isa.instr.val 0x%x\n",s->isa.instr.val);
 
   printf("simm %ld at 0x%lx simm_1 0x%x\n",simm,s->seq_pc-4,simm_1);
-  printf("s->isa.instr.b.simm12 0x%x\n",s->isa.instr.b.simm12);
-  printf("s->isa.instr.b.simm11 0x%x\n",s->isa.instr.b.simm11);
-  printf("s->isa.instr.b.simm10_5 0x%x\n",s->isa.instr.b.simm10_5);
+  printf("s->isa.instr.b.simm12 0x%x\n", s->isa.instr.b.simm12 << 11);
+  printf("s->isa.instr.b.simm11 0x%x\n",s->isa.instr.b.simm11<< 10);
+  printf("s->isa.instr.b.simm10_5 0x%x\n",s->isa.instr.b.simm10_5<< 4);
   printf("s->isa.instr.b.simm4_1 0x%x\n",s->isa.instr.b.simm4_1);
 
   simm = simm << 1;
