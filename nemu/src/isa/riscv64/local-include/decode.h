@@ -68,7 +68,7 @@ static inline def_DHelper(B)
 {
   decode_op_r(s, id_src1, s->isa.instr.b.rs1, true);
   sword_t simm = s->isa.instr.b.simm12 << 11 | s->isa.instr.b.simm11 << 10 | s->isa.instr.b.simm10_5 << 4 | s->isa.instr.b.simm4_1;
-  simm = instr_sign_ext(simm << 1);
+  simm = simm << 1;
   decode_op_i(s, id_src2, simm, true);
   decode_op_r(s, id_dest, s->isa.instr.b.rs2, true);
 
