@@ -7,7 +7,7 @@ static inline def_EHelper(andi)
 
 static inline def_EHelper(andr)
 {
-    rtl_and(s, ddest, dsrc1, dsrc1);
+    rtl_and(s, ddest, dsrc1, dsrc2);
     print_asm_template3(andr);
     
 }
