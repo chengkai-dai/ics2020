@@ -141,7 +141,7 @@ static inline def_EHelper(op_r)
   {
     switch (s->isa.instr.r.funct3)
     {
-      // EXW(4, divr, 8)
+      EXW(0, mul, 8)
     default:
       exec_inv(s);
     }
