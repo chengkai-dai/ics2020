@@ -68,14 +68,14 @@ static inline def_DHelper(B)
 {
   decode_op_r(s, id_src1, s->isa.instr.b.rs1, true);
   sword_t simm = s->isa.instr.b.simm12 << 11 | s->isa.instr.b.simm11 << 10 | s->isa.instr.b.simm10_5 << 4 | s->isa.instr.b.simm4_1;
-    // uint32_t simm_1 = s->isa.instr.b.simm12 << 11 | s->isa.instr.b.simm11 << 10 | s->isa.instr.b.simm10_5 << 4 | s->isa.instr.b.simm4_1;
-  // printf("s->isa.instr.val 0x%x\n",s->isa.instr.val);
+    uint32_t simm_1 = s->isa.instr.b.simm12 << 11 | s->isa.instr.b.simm11 << 10 | s->isa.instr.b.simm10_5 << 4 | s->isa.instr.b.simm4_1;
+  printf("s->isa.instr.val 0x%x\n",s->isa.instr.val);
 
-  // printf("simm %ld at 0x%lx simm_1 0x%x\n",simm,s->seq_pc-4,simm_1);
-  // printf("s->isa.instr.b.simm12 0x%x\n",s->isa.instr.b.simm12);
-  // printf("s->isa.instr.b.simm11 0x%x\n",s->isa.instr.b.simm11);
-  // printf("s->isa.instr.b.simm10_5 0x%x\n",s->isa.instr.b.simm10_5);
-  // printf("s->isa.instr.b.simm4_1 0x%x\n",s->isa.instr.b.simm4_1);
+  printf("simm %ld at 0x%lx simm_1 0x%x\n",simm,s->seq_pc-4,simm_1);
+  printf("s->isa.instr.b.simm12 0x%x\n",s->isa.instr.b.simm12);
+  printf("s->isa.instr.b.simm11 0x%x\n",s->isa.instr.b.simm11);
+  printf("s->isa.instr.b.simm10_5 0x%x\n",s->isa.instr.b.simm10_5);
+  printf("s->isa.instr.b.simm4_1 0x%x\n",s->isa.instr.b.simm4_1);
 
   simm = simm << 1;
   decode_op_i(s, id_src2, simm, true);
