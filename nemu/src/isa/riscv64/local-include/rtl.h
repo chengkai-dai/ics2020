@@ -37,6 +37,31 @@ static inline def_rtl(sltiu, rtlreg_t *dest, const rtlreg_t *src1, const sword_t
     *dest = 0;
 }
 
+static inline def_rtl(sltu, rtlreg_t *dest, const rtlreg_t *src1, const rtlreg_t *src2)
+{
+  if (*src1 < (word_t)(*src2))
+    *dest = 1;
+  else
+    *dest = 0;
+}
+
+static inline def_rtl(slti, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
+{
+  if ((sword_t)*src1 < imm)
+    *dest = 1;
+  else
+    *dest = 0;
+}
+
+static inline def_rtl(slt, rtlreg_t *dest, const rtlreg_t *src1, const rtlreg_t *src2)
+{
+  if ((sword_t)*src1 < (sword_t)(*src2))
+    *dest = 1;
+  else
+    *dest = 0;
+}
+
+
 static inline def_rtl(beq, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
 {
   if (*src1 == *dest)
