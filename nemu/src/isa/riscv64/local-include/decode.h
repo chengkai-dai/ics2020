@@ -67,7 +67,7 @@ static inline def_DHelper(J)
 static inline def_DHelper(B)
 {
   decode_op_r(s, id_src1, s->isa.instr.b.rs1, true);
-  sword_t simm = (sword_t)(s->isa.instr.b.simm12 << 11 | s->isa.instr.b.simm11 << 10 | s->isa.instr.b.simm10_5 << 4 | s->isa.instr.b.simm4_1);
+  sword_t simm = (s->isa.instr.b.simm12 << 11) | (s->isa.instr.b.simm11 << 10) | (s->isa.instr.b.simm10_5 << 4) | (s->isa.instr.b.simm4_1);
     uint32_t simm_1 = s->isa.instr.b.simm12 << 11 | s->isa.instr.b.simm11 << 10 | s->isa.instr.b.simm10_5 << 4 | s->isa.instr.b.simm4_1;
   printf("s->isa.instr.val 0x%x\n",s->isa.instr.val);
 
