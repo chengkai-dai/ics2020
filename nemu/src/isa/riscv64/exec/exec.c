@@ -88,6 +88,7 @@ static inline def_EHelper(op_imm_32)
   switch (s->isa.instr.i.funct3)
   {
     EXW(0, addiw, 8)
+    EXW(1, shliw, 8)
   default:
     exec_inv(s);
   }

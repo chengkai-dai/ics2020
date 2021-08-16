@@ -22,3 +22,8 @@ static inline def_EHelper(shli){
     rtl_shli(s, ddest, dsrc1, id_src2->imm);
     print_asm_template3(slli);
 }
+
+static inline def_EHelper(shliw){
+    rtl_shliw(s, ddest, dsrc1, id_src2->imm);
+    print_asm_template3(slliw);
+}
