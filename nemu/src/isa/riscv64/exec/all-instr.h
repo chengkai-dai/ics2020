@@ -9,6 +9,7 @@
 #include "set.h"
 #include "branch.h"
 #include "shift.h"
+#include "and.h"
 
 def_EHelper(inv);
 def_EHelper(nemu_trap);

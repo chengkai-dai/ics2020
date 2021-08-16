@@ -1,4 +1,4 @@
-static inline def_EHelper(shr)
+static inline def_EHelper(shri)
 {
     if(id_src2->imm >> 10){
         printf("before dest 0x%lx\n",*ddest);
