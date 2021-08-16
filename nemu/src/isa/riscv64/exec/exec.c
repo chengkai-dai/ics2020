@@ -71,6 +71,7 @@ static inline def_EHelper(op_imm)
 static inline def_EHelper(op_r)
 {
   printf("s->isa.instr.r.funct7 0x%x\n",s->isa.instr.r.funct7);
+  printf("s->isa.instr.val %x\n",s->isa.instr.val);
   assert(s->isa.instr.r.funct7 == 0 || s->isa.instr.r.funct7 == 0x100000);
   switch (s->isa.instr.r.funct3)
   {
