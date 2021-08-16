@@ -104,23 +104,35 @@ static inline def_EHelper(op_r_32)
 
 static inline def_EHelper(op_r)
 {
-  
-  assert(s->isa.instr.r.funct7 == 0 || s->isa.instr.r.funct7 == 0x20);
-  switch (s->isa.instr.r.funct3)
+
+  assert(s->isa.instr.r.funct7 == 0 || s->isa.instr.r.funct7 == 0x20 || s->isa.instr.r.funct7 == 0x1);
+  if (!(s->isa.instr.r.funct7 == 0x1))
   {
-    EXW(0, add_sub, 8)
-    EXW(3, sltu, 8)
-    EXW(6, orr, 8)
-    EXW(7, andr, 8)
-  default:
-    exec_inv(s);
+    switch (s->isa.instr.r.funct3)
+    {
+      EXW(0, add_sub, 8)
+      EXW(3, sltu, 8)
+      EXW(6, orr, 8)
+      EXW(7, andr, 8)
+    default:
+      exec_inv(s);
+    }
+  }
+  else
+  {
+    switch (s->isa.instr.r.funct3)
+    {
+      EXW(4, divr, 8)
+    default:
+      exec_inv(s);
+    }
   }
 }
 
 static inline void fetch_decode_exec(DecodeExecState *s)
 {
   s->isa.instr.val = instr_fetch(&s->seq_pc, 4);
-  printf("s->isa.instr.val 0x%x\n",s->isa.instr.val);
+  // printf("s->isa.instr.val 0x%x\n", s->isa.instr.val);
 
   Assert(s->isa.instr.i.opcode1_0 == 0x3, "Invalid instruction");
   // printf("s->isa.instr.i.opcode6_2 0x%x\n",s->isa.instr.i.opcode6_2);
