@@ -11,6 +11,7 @@
 #include "shift.h"
 #include "and.h"
 #include "xor.h"
+#include "or.h"
 
 def_EHelper(inv);
 def_EHelper(nemu_trap);
