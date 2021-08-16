@@ -14,6 +14,7 @@ static inline def_EHelper(load)
   switch (s->isa.instr.i.funct3)
   {
     // EXW(3, ld, 8)
+    EXW(1, lds, 2)
     EXW(2, lds, 4)
     EXW(3, ld, 8)
     EXW(4, ld, 1)
