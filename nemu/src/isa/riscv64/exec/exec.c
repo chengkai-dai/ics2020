@@ -20,22 +20,21 @@ static inline def_EHelper(load)
 
 static inline def_EHelper(auipc)
 {
-  rtl_auipc(s,ddest,id_src1->imm);
+  rtl_auipc(s, ddest, id_src1->imm);
   print_asm_template2(auipc);
 }
 
 static inline def_EHelper(jal)
 {
-  rtl_jal(s,ddest,id_src1->imm);
+  rtl_jal(s, ddest, id_src1->imm);
   print_asm_template2(jal);
 }
 
 static inline def_EHelper(jalr)
 {
-  rtl_jalr(s,ddest,dsrc1,id_src2->imm);
+  rtl_jalr(s, ddest, dsrc1, id_src2->imm);
   print_asm_template3(jalr);
 }
-
 
 static inline def_EHelper(store)
 {
@@ -71,9 +70,10 @@ static inline def_EHelper(op_imm)
 
 static inline def_EHelper(op_r)
 {
+  assert(s->isa.instr.r.funct7 == 0 || s->isa.instr.r.funct7 == 0x100000);
   switch (s->isa.instr.r.funct3)
   {
-    EXW(0, add, 8)
+    EXW(0, add_sub, 8)
   default:
     exec_inv(s);
   }

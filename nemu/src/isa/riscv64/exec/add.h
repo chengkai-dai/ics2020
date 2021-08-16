@@ -12,10 +12,12 @@ static inline def_EHelper(addi)
     }
 }
 
-static inline def_EHelper(add)
+static inline def_EHelper(add_sub)
 {
-    rtl_add(s, ddest, dsrc1, dsrc2);
-
+    if(s->isa.instr.r.funct7==0)
+        rtl_add(s, ddest, dsrc1, dsrc2);
+    else
+        rtl_sub(s, ddest, dsrc1, dsrc2);
     switch (s->width)
     {
     case 8:
