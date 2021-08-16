@@ -62,7 +62,7 @@ static inline def_DHelper(J)
   // simm = s->isa.instr.j.simm20 << 19 | s->isa.instr.j.simm19_12 << 11 | s->isa.instr.j.simm11 << 10 | s->isa.instr.j.simm10_1;
   uint32_t imm = ((s->isa.instr.j.imm20 << 19) | (s->isa.instr.j.imm19_12 << 11) | (s->isa.instr.j.imm11 << 10) | (s->isa.instr.j.imm10_1)) << 1;
   if (s->isa.instr.j.imm20)
-    imm = imm | (0xFFFFFFFF << 21);
+    imm = imm | (0xFFFFFFFF << 20);
   sword_t simm = (sword_t)imm;
   decode_op_i(s, id_src1, simm, true);
 
