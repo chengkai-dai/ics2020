@@ -10,6 +10,8 @@ static inline void set_width(DecodeExecState *s, int width)
 
 static inline def_EHelper(load)
 {
+  printf("s->isa.instr.i.funct3 0x%x\n",s->isa.instr.i.funct3);
+
   switch (s->isa.instr.i.funct3)
   {
     EXW(3, ld, 8)
