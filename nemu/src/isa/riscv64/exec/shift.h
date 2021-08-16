@@ -41,3 +41,17 @@ static inline def_EHelper(shriw)
         print_asm_template3(srli);
     }
 }
+
+static inline def_EHelper(shrrw)
+{
+    if (s->isa.instr.r.funct7>>10)
+    {   
+        rtl_sarw(s, ddest, dsrc1, dsrc2);
+        print_asm_template3(sraw);
+    }
+    else
+    {
+        rtl_shrw(s, ddest, dsrc1, dsrc2);
+        print_asm_template3(srlw);
+    }
+}
