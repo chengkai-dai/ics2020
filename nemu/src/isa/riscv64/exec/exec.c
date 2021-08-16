@@ -18,6 +18,7 @@ static inline def_EHelper(load)
     EXW(2, lds, 4)
     EXW(3, ld, 8)
     EXW(4, ld, 1)
+    EXW(5, ld, 2)
   default:
     exec_inv(s);
   }
