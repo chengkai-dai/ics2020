@@ -71,6 +71,10 @@ static inline def_DHelper(B)
     uint32_t simm_1 = s->isa.instr.b.simm12 << 11 | s->isa.instr.b.simm11 << 10 | s->isa.instr.b.simm10_5 << 4 | s->isa.instr.b.simm4_1;
 
   printf("simm %ld at 0x%lx simm_1 0x%x\n",simm,s->seq_pc-4,simm_1);
+  printf("s->isa.instr.b.simm12 0x%x\n",s->isa.instr.b.simm12);
+  printf("s->isa.instr.b.simm11 0x%x\n",s->isa.instr.b.simm11);
+  printf("s->isa.instr.b.simm10_5 0x%x\n",s->isa.instr.b.simm10_5);
+  printf("s->isa.instr.b.simm4_1 0x%x\n",s->isa.instr.b.simm4_1);
 
   simm = simm << 1;
   decode_op_i(s, id_src2, simm, true);
