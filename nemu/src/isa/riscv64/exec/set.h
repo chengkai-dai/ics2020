@@ -11,3 +11,10 @@ static inline def_EHelper(sltu)
     print_asm_template3(sltu);
 
 }
+
+static inline def_EHelper(slt)
+{
+    rtl_slt(s, ddest, dsrc1, dsrc2);
+    print_asm_template3(sltu);
+
+}
