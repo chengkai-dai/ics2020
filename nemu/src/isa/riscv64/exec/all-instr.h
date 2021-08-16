@@ -13,6 +13,7 @@
 #include "xor.h"
 #include "or.h"
 #include "div.h"
+#include "mul.h"
 
 def_EHelper(inv);
 def_EHelper(nemu_trap);
