@@ -30,7 +30,7 @@ static inline def_EHelper(shliw){
 
 static inline def_EHelper(shriw)
 {
-    if (id_src2->imm >> 5)
+    if (id_src2->imm >> 10)
     {   
         rtl_sariw(s, ddest, dsrc1, id_src2->imm);
         print_asm_template3(srai);
@@ -44,7 +44,7 @@ static inline def_EHelper(shriw)
 
 static inline def_EHelper(shrrw)
 {
-    if (s->isa.instr.r.funct7>>10)
+    if (s->isa.instr.r.funct7>>5)
     {   
         rtl_sarw(s, ddest, dsrc1, dsrc2);
         print_asm_template3(sraw);
