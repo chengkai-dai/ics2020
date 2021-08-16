@@ -14,6 +14,8 @@
 #include "or.h"
 #include "div.h"
 #include "mul.h"
+#include "idiv.h"
+#include "rem.h"
 
 def_EHelper(inv);
 def_EHelper(nemu_trap);

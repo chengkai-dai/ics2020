@@ -108,6 +108,7 @@ static inline def_EHelper(op_r_32)
     {
       EXW(0, mulw, 8)
       EXW(4, divw, 8)
+      EXW(6, remw, 8)
     default:
       exec_inv(s);
     }
