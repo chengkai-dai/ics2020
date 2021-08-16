@@ -68,6 +68,7 @@ static inline def_EHelper(op_imm)
   switch (s->isa.instr.i.funct3)
   {
     EXW(0, addi, 8)
+    EXW(1, shli, 8)
     EXW(4, xori, 8)
     EXW(3, sltiu, 8)
     EXW(5, shri, 8)
