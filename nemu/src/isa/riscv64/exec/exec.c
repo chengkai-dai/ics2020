@@ -63,6 +63,7 @@ static inline def_EHelper(branch)
     EXW(1, bne, 8)
     EXW(4, blt, 8)
     EXW(5, bge, 8)
+    EXW(6, bltu, 8)
   default:
     exec_inv(s);
   }
