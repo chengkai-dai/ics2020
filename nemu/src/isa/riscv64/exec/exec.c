@@ -46,6 +46,7 @@ static inline def_EHelper(store)
   {
     EXW(0, st, 1)
     EXW(1, st, 2)
+    EXW(2, st, 4)
     EXW(3, st, 8)
   default:
     exec_inv(s);
