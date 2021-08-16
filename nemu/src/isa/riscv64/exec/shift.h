@@ -27,3 +27,17 @@ static inline def_EHelper(shliw){
     rtl_shliw(s, ddest, dsrc1, id_src2->imm);
     print_asm_template3(slliw);
 }
+
+static inline def_EHelper(shriw)
+{
+    if (id_src2->imm >> 10)
+    {   
+        rtl_sariw(s, ddest, dsrc1, id_src2->imm);
+        print_asm_template3(srai);
+    }
+    else
+    {
+        rtl_shriw(s, ddest, dsrc1, id_src2->imm);
+        print_asm_template3(srli);
+    }
+}

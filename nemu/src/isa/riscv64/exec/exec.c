@@ -74,8 +74,8 @@ static inline def_EHelper(op_imm)
   {
     EXW(0, addi, 8)
     EXW(1, shli, 8)
-    EXW(4, xori, 8)
     EXW(3, sltiu, 8)
+    EXW(4, xori, 8)
     EXW(5, shri, 8)
     EXW(7, andi, 8)
   default:
@@ -89,6 +89,7 @@ static inline def_EHelper(op_imm_32)
   {
     EXW(0, addiw, 8)
     EXW(1, shliw, 8)
+    EXW(5, shriw, 8)
   default:
     exec_inv(s);
   }
