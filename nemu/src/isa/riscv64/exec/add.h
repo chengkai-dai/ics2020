@@ -32,12 +32,32 @@ static inline def_EHelper(add_sub)
     // }
 }
 
+
+
 static inline def_EHelper(addiw)
 {
     rtl_addwi(s, ddest, dsrc1, id_src2->imm);
 
     print_asm_template3(addw);
     
+    // switch (s->width)
+    // {
+    // case 8:
+    //     print_asm_template3(add);
+    //     break;
+    // default:
+    //     assert(0);
+    // }
+}
+
+static inline def_EHelper(add_sub_w)
+{
+    if(s->isa.instr.r.funct7==0)
+        rtl_addw(s, ddest, dsrc1, dsrc2);
+    else
+        rtl_subw(s, ddest, dsrc1, dsrc2);
+
+    print_asm_template3(add);
     // switch (s->width)
     // {
     // case 8:

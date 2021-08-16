@@ -81,6 +81,17 @@ static inline def_EHelper(op_imm_32)
   }
 }
 
+static inline def_EHelper(op_r_32)
+{
+  assert(s->isa.instr.r.funct7 == 0 || s->isa.instr.r.funct7 == 0x20);
+  switch (s->isa.instr.r.funct3)
+  {
+    EXW(0, add_sub_w, 8)
+  default:
+    exec_inv(s);
+  }
+}
+
 static inline def_EHelper(op_r)
 {
   
@@ -106,6 +117,7 @@ static inline void fetch_decode_exec(DecodeExecState *s)
     IDEX(0b00110, I, op_imm_32)
     IDEX(0b01000, S, store)
     IDEX(0b01100, R, op_r)
+    IDEX(0b01110, R, op_r_32)
     IDEX(0b01101, U, lui)
     IDEX(0b11000, B, branch)
     IDEX(0b11001, I, jalr)
