@@ -71,15 +71,7 @@ static inline def_DHelper(B)
   if (s->isa.instr.b.simm12)
     imm = imm | (0xFFFFFFFF << 13);
   sword_t simm = (sword_t)imm;
-  printf("s->isa.instr.val 0x%x\n", s->isa.instr.val);
-
-  printf("simm %ld at 0x%lx imm 0x%x\n", simm, s->seq_pc - 4, imm);
-  printf("s->isa.instr.b.simm12 0x%x\n", s->isa.instr.b.simm12 << 11);
-  printf("s->isa.instr.b.simm11 0x%x\n", s->isa.instr.b.simm11 << 10);
-  printf("s->isa.instr.b.simm10_5 0x%x\n", s->isa.instr.b.simm10_5 << 4);
-  printf("s->isa.instr.b.simm4_1 0x%x\n", s->isa.instr.b.simm4_1);
-
-  // simm = simm << 1;
+ 
   decode_op_i(s, id_src2, simm, true);
   decode_op_r(s, id_dest, s->isa.instr.b.rs2, true);
 }
