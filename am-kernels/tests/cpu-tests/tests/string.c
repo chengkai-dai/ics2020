@@ -23,5 +23,7 @@ int main() {
 
 	check(memcmp(memset(str, '#', 5), s[5], 5) == 0);
 
+	printf("test finished\n");
+
 	return 0;
 }
