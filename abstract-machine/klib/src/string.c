@@ -7,12 +7,7 @@ size_t strlen(const char *str)
 {
   const char *char_ptr;
   char_ptr = str;
-  // unsigned long int longword;
-  // for (char_ptr = str; ((unsigned long int)char_ptr & (sizeof(longword) - 1)) != 0; ++char_ptr)
-  // {
-  //   if (*char_ptr == '\0')
-  //     return char_ptr - str;
-  // }
+
   size_t len = 0;
   while (*char_ptr++ != '\0')
   {
@@ -37,16 +32,6 @@ void strrev(char *str)
 
 char *strcpy(char *dst, const char *src)
 {
-  // const char *char_ptr = src;
-  // char *dest_ptr = dst;
-  // while (*char_ptr != '\0')
-  // {
-  //   *dest_ptr = *char_ptr;
-  //   dest_ptr++;
-  //   char_ptr++;
-  // }
-  // *dest_ptr = '\0';
-  // return dest_ptr;
   char *save = dst;
   for (; (*dst = *src) != '\0'; ++src, ++dst)
     ;
@@ -96,7 +81,12 @@ void *memmove(void *dst, const void *src, size_t n)
 
 void *memcpy(void *out, const void *in, size_t n)
 {
-  return NULL;
+  char *dst = (char *)out;
+  char *src = (char *)in;
+  for(int i=0;i<n;i++){
+    dst[i]=src[i];
+  }
+  return out;
 }
 
 int memcmp(const void *s1, const void *s2, size_t n)

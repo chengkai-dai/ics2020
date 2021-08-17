@@ -2,7 +2,7 @@
 #include <klib.h>
 #include <klib-macros.h>
 #include <stdarg.h>
-#include <stdio.h>
+
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 static inline int my_vsprintf(char *out, char const *fmt, va_list arg)
