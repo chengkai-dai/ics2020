@@ -73,7 +73,7 @@ static inline int my_vsprintf(char *out, char const *fmt, va_list arg)
     else
     {
       // strcpy(out + length, &ch);
-      out[length]=ch;
+      out[length] = ch;
       length++;
     }
   }
@@ -92,12 +92,13 @@ int vsprintf(char *out, const char *fmt, va_list ap)
 
 int sprintf(char *out, const char *fmt, ...)
 {
-  
+
   va_list arg;
   int done;
   va_start(arg, fmt);
   done = my_vsprintf(out, fmt, arg);
   va_end(arg);
+  out[done] = '\0';
   return done;
 }
 
