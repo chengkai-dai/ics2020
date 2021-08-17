@@ -71,14 +71,17 @@ void cpu_exec(uint64_t n) {
       return;
     default: nemu_state.state = NEMU_RUNNING;
   }
+  vaddr_t init_pc = cpu.pc;
+  difftest_step(init_pc, cpu.pc);
 
   uint64_t timer_start = get_time();
   for (; n > 0; n --) {
+    vaddr_t this_pc = cpu.pc;
 
     /* Execute one instruction, including instruction fetch,
      * instruction decode, and the actual execution. */
     __attribute__((unused)) vaddr_t seq_pc = isa_exec_once();
-    vaddr_t this_pc = cpu.pc;
+
     difftest_step(this_pc, cpu.pc);
 
     g_nr_guest_instr ++;
