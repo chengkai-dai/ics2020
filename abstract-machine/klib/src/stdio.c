@@ -92,6 +92,7 @@ int vsprintf(char *out, const char *fmt, va_list ap)
 
 int sprintf(char *out, const char *fmt, ...)
 {
+  printf("11111111\n");
   printf("fmt %s\n",fmt);
   va_list arg;
   int done;
