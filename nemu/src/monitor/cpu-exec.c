@@ -71,8 +71,8 @@ void cpu_exec(uint64_t n) {
       return;
     default: nemu_state.state = NEMU_RUNNING;
   }
-  vaddr_t init_pc = cpu.pc;
-  difftest_step(init_pc, cpu.pc);
+  
+  ref_difftest_exec(1);
 
   uint64_t timer_start = get_time();
   for (; n > 0; n --) {
