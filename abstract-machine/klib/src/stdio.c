@@ -86,7 +86,7 @@ int printf(const char *fmt, ...)
   va_list arg;
   int done;
   va_start(arg, fmt);
-  char* out="\0";
+  char* out="1\0";
   done = vsprintf(out, fmt, arg);
   va_end(arg);
 
