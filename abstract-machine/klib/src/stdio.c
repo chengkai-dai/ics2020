@@ -2,14 +2,13 @@
 #include <klib.h>
 #include <klib-macros.h>
 #include <stdarg.h>
-
+#include <stdio.h>
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 static inline int my_vsprintf(char *out, char const *fmt, va_list arg)
 {
 
   //https://stackoverflow.com/questions/16647278/minimal-implementation-of-sprintf-or-printf
-
   char ch;
   int length = 0;
 
@@ -93,10 +92,12 @@ int vsprintf(char *out, const char *fmt, va_list ap)
 
 int sprintf(char *out, const char *fmt, ...)
 {
+  printf("fmt %s\n",fmt);
   va_list arg;
   int done;
   va_start(arg, fmt);
   done = my_vsprintf(out, fmt, arg);
+  printf("out %s\n",out);
   va_end(arg);
   return done;
 }
