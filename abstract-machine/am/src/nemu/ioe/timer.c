@@ -8,14 +8,14 @@ void __am_timer_init()
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime)
 {
 
-  uint8_t data1 = inl(RTC_ADDR);
-  uint8_t data2 = inl(RTC_ADDR + 1);
-  uint8_t data3 = inl(RTC_ADDR + 2);
-  uint8_t data4 = inl(RTC_ADDR + 3);
-  uint8_t data5 = inl(RTC_ADDR + 4);
-  uint8_t data6 = inl(RTC_ADDR + 5);
-  uint8_t data7 = inl(RTC_ADDR + 6);
-  uint8_t data8 = inl(RTC_ADDR + 7);
+  uint8_t data1 = inb(RTC_ADDR);
+  uint8_t data2 = inb(RTC_ADDR + 1);
+  uint8_t data3 = inb(RTC_ADDR + 2);
+  uint8_t data4 = inb(RTC_ADDR + 3);
+  uint8_t data5 = inb(RTC_ADDR + 4);
+  uint8_t data6 = inb(RTC_ADDR + 5);
+  uint8_t data7 = inb(RTC_ADDR + 6);
+  uint8_t data8 = inb(RTC_ADDR + 7);
 
   uint64_t time = ((uint64_t)data1) << 56 |
                   ((uint64_t)data2) << 48 |
