@@ -77,12 +77,23 @@ int vsprintf(char *out, char const *fmt, va_list arg)
       length++;
     }
   }
+  out[length] = '\0';
   return length;
 }
 
 int printf(const char *fmt, ...)
 {
-  return 0;
+  va_list arg;
+  int done;
+  va_start(arg, fmt);
+  char* out="init";
+  done = vsprintf(out, fmt, arg);
+  va_end(arg);
+
+  for(int i=0;i<done;++i){
+    putch(out[i]);
+  }
+  return done;
 }
 
 
@@ -94,7 +105,6 @@ int sprintf(char *out, const char *fmt, ...)
   va_start(arg, fmt);
   done = vsprintf(out, fmt, arg);
   va_end(arg);
-  out[done] = '\0';
   return done;
 }
 
