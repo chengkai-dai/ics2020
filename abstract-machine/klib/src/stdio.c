@@ -87,12 +87,12 @@ int printf(const char *fmt, ...)
   va_list arg;
   int done;
   va_start(arg, fmt);
-  char* out="1\0";
-  done = vsprintf(out, fmt, arg);
+  char  buff[128];
+  done = vsprintf(buff, fmt, arg);
   va_end(arg);
 
   for(int i=0;i<done;++i){
-    putch(out[i]);
+    putch(buff[i]);
   }
   return done;
 }
