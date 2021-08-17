@@ -7,7 +7,7 @@ void __am_timer_init()
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime)
 {
-
+  printf("start\n");
   uint8_t data1 = inb(RTC_ADDR);
   uint8_t data2 = inb(RTC_ADDR + 1);
   uint8_t data3 = inb(RTC_ADDR + 2);
