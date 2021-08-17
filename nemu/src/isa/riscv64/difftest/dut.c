@@ -11,8 +11,10 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
       return false;
     }
   }
-  if(pc!=cpu.pc)
+  if(pc!=cpu.pc){
+    printf("pc is not same 0x%lx 0x%lx\n",pc,cpu.pc);
     return false;
+  }
   return true;
 }
 
