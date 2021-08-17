@@ -73,7 +73,7 @@ void cpu_exec(uint64_t n) {
   }
 
   uint64_t timer_start = get_time();
-
+  ref_difftest_exec(1);
   for (; n > 0; n --) {
     vaddr_t this_pc = cpu.pc;
 
