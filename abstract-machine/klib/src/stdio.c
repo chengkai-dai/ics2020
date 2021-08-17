@@ -92,13 +92,11 @@ int vsprintf(char *out, const char *fmt, va_list ap)
 
 int sprintf(char *out, const char *fmt, ...)
 {
-  printf("11111111\n");
-  printf("fmt %s\n",fmt);
+  
   va_list arg;
   int done;
   va_start(arg, fmt);
   done = my_vsprintf(out, fmt, arg);
-  printf("out %s\n",out);
   va_end(arg);
   return done;
 }
