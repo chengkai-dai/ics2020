@@ -81,22 +81,21 @@ int vsprintf(char *out, char const *fmt, va_list arg)
   return length;
 }
 
-
 int printf(const char *fmt, ...)
 {
   va_list arg;
   int done;
   va_start(arg, fmt);
-  char  buff[128];
+  char buff[128];
   done = vsprintf(buff, fmt, arg);
   va_end(arg);
 
-  for(int i=0;i<done;++i){
+  for (int i = 0; i < done; ++i)
+  {
     putch(buff[i]);
   }
   return done;
 }
-
 
 int sprintf(char *out, const char *fmt, ...)
 {
