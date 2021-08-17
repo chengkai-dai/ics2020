@@ -3,14 +3,36 @@
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
-size_t strlen(const char *s)
+size_t strlen(const char *str)
 {
-  return 0;
+  const char *char_ptr;
+  char_ptr = str;
+  // unsigned long int longword;
+  // for (char_ptr = str; ((unsigned long int)char_ptr & (sizeof(longword) - 1)) != 0; ++char_ptr)
+  // {
+  //   if (*char_ptr == '\0')
+  //     return char_ptr - str;
+  // }
+  size_t len = 0;
+  while (*char_ptr++ != '\0')
+  {
+    len++;
+  }
+  return len;
 }
 
 char *strcpy(char *dst, const char *src)
 {
-  return NULL;
+  const char *char_ptr=src;
+  char *dest_ptr=dst;
+  while (*char_ptr != '\0')
+  {
+    *dest_ptr = *char_ptr;
+    dest_ptr++;
+    char_ptr++;
+  }
+  *dest_ptr='\0';
+  return dest_ptr;
 }
 
 char *strncpy(char *dst, const char *src, size_t n)
@@ -20,35 +42,23 @@ char *strncpy(char *dst, const char *src, size_t n)
 
 char *strcat(char *dst, const char *src)
 {
-  return NULL;
+  strcpy(dst + strlen(dst), src);
+  return dst;
 }
 
 int strcmp(const char *s1, const char *s2)
 {
-  int i = 0;
-  if (s1 == NULL && s2 == NULL)
+  const unsigned char *p1 = (const unsigned char *)s1;
+  const unsigned char *p2 = (const unsigned char *)s2;
+  unsigned char c1, c2;
+  do
   {
-    return -1;
-  }
-
-  if (s1 == NULL && s2 != NULL)
-  {
-    return (int)s2[0];
-  }
-
-  if (s2 == NULL && s1 != NULL)
-  {
-    return (int)s1[0];
-  }
-
-  while (s1[i] != '\0' && s2[i] != '\0')
-  {
-    if (s1[i] != s2[i]){
-      return (int)(s1[i]-s2[i]);
-    }
-    i++;
-  }
-  return (int)(s1[i-1]-s2[i-1]);
+    c1 = (unsigned char)*p1++;
+    c2 = (unsigned char)*p2++;
+    if (c1 == '\0')
+      return c1 - c2;
+  } while (c1 == c2);
+  return c1 - c2;
 }
 
 int strncmp(const char *s1, const char *s2, size_t n)
