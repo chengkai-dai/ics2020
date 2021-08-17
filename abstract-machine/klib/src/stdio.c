@@ -5,7 +5,7 @@
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
-static inline int my_vsprintf(char *out, char const *fmt, va_list arg)
+int vsprintf(char *out, char const *fmt, va_list arg)
 {
 
   //https://stackoverflow.com/questions/16647278/minimal-implementation-of-sprintf-or-printf
@@ -85,10 +85,6 @@ int printf(const char *fmt, ...)
   return 0;
 }
 
-int vsprintf(char *out, const char *fmt, va_list ap)
-{
-  return 0;
-}
 
 int sprintf(char *out, const char *fmt, ...)
 {
@@ -96,7 +92,7 @@ int sprintf(char *out, const char *fmt, ...)
   va_list arg;
   int done;
   va_start(arg, fmt);
-  done = my_vsprintf(out, fmt, arg);
+  done = vsprintf(out, fmt, arg);
   va_end(arg);
   out[done] = '\0';
   return done;
