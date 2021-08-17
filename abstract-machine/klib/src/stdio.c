@@ -21,6 +21,7 @@ int vsprintf(char *out, char const *fmt, va_list arg)
   // double double_temp;
   while ((ch = *fmt++))
   {
+    printf("%c\n",ch);
     if ('%' == ch)
     {
       switch (ch = *fmt++)
