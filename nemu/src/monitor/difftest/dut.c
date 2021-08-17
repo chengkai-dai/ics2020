@@ -110,6 +110,7 @@ void difftest_step(vaddr_t this_pc, vaddr_t next_pc) {
   }
 
   ref_difftest_exec(1);
+  printf("aaaaaaa\n");
   ref_difftest_getregs(&ref_r);
 
   checkregs(&ref_r, this_pc);
