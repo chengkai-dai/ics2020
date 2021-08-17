@@ -9,14 +9,23 @@ void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime)
 {
   printf("start\n");
   uint8_t data1 = inb(RTC_ADDR);
-  printf("data1 %d\n",data1);
-//   uint8_t data2 = inb(RTC_ADDR + 1);
-//   uint8_t data3 = inb(RTC_ADDR + 2);
-//   uint8_t data4 = inb(RTC_ADDR + 3);
-//   uint8_t data5 = inb(RTC_ADDR + 4);
-//   uint8_t data6 = inb(RTC_ADDR + 5);
-//   uint8_t data7 = inb(RTC_ADDR + 6);
-//   uint8_t data8 = inb(RTC_ADDR + 7);
+  uint8_t data2 = inb(RTC_ADDR + 1);
+  uint8_t data3 = inb(RTC_ADDR + 2);
+  uint8_t data4 = inb(RTC_ADDR + 3);
+  uint8_t data5 = inb(RTC_ADDR + 4);
+  uint8_t data6 = inb(RTC_ADDR + 5);
+  uint8_t data7 = inb(RTC_ADDR + 6);
+  uint8_t data8 = inb(RTC_ADDR + 7);
+
+printf("data1 %d\n",data1);
+printf("data2 %d\n",data2);
+printf("data3 %d\n",data3);
+printf("data4 %d\n",data4);
+printf("data5 %d\n",data5);
+printf("data6 %d\n",data6);
+printf("data7 %d\n",data7);
+printf("data8 %d\n",data8);
+
 
 //   uint32_t sec = ((uint32_t)data5) << 24 |
 //                  ((uint32_t)data6) << 16 |
