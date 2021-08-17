@@ -23,16 +23,20 @@ size_t strlen(const char *str)
 
 char *strcpy(char *dst, const char *src)
 {
-  const char *char_ptr=src;
-  char *dest_ptr=dst;
-  while (*char_ptr != '\0')
-  {
-    *dest_ptr = *char_ptr;
-    dest_ptr++;
-    char_ptr++;
-  }
-  *dest_ptr='\0';
-  return dest_ptr;
+  // const char *char_ptr = src;
+  // char *dest_ptr = dst;
+  // while (*char_ptr != '\0')
+  // {
+  //   *dest_ptr = *char_ptr;
+  //   dest_ptr++;
+  //   char_ptr++;
+  // }
+  // *dest_ptr = '\0';
+  // return dest_ptr;
+  char *save = dst;
+  for (; (*dst = *src) != '\0'; ++src, ++dst)
+    ;
+  return (save);
 }
 
 char *strncpy(char *dst, const char *src, size_t n)
