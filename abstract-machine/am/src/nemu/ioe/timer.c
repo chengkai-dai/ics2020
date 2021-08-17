@@ -1,6 +1,6 @@
 #include <am.h>
 #include <nemu.h>
-
+#include "klib.h"
 void __am_timer_init()
 {
 }
@@ -10,7 +10,8 @@ void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime)
 
   uint32_t data1=inl(RTC_ADDR);
   uint32_t data2=inl(RTC_ADDR+4);
-
+  printf("data 1 %d\n",data1);
+  printf("data 2 %d\n",data2);
   uint64_t time = ((uint64_t)data1) << 32 | data2;
 
   uptime->us = time;
