@@ -81,6 +81,7 @@ int vsprintf(char *out, char const *fmt, va_list arg)
   return length;
 }
 
+
 int printf(const char *fmt, ...)
 {
   va_list arg;
