@@ -16,7 +16,7 @@ void __am_gpu_init()
 
 void __am_gpu_config(AM_GPU_CONFIG_T *cfg)
 {
-  uint32_t size = inw(VGACTL_ADDR);
+  uint32_t size = inl(VGACTL_ADDR);
   int w = size >> 16;
   int h = (int)(int16_t)size;
 
