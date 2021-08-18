@@ -60,7 +60,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
       {
 
         // *(pixel_info + ctl->x + i * width + j) = inl(VGACTL_ADDR + 4 * (ctl->x + i * width + j));
-        pixel_info[ctl->y * width + ctl->x + i * width + j] = buffer[ctl->x * i + j];
+        pixel_info[ctl->y * width + ctl->x + i * width + j] = buffer[ctl->w * i + j];
       }
     }
   }
