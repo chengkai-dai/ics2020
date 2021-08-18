@@ -22,6 +22,7 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg)
 
   printf("width %d\n",w);
   printf("height %d\n",h);
+  printf("size %d\n",size);
   *cfg = (AM_GPU_CONFIG_T){
       .present = true, .has_accel = false, .width = w, .height = h, .vmemsz = 0};
 }
