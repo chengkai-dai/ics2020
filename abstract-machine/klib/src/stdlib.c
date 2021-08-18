@@ -30,6 +30,15 @@ int atoi(const char* nptr) {
 }
 
 void *malloc(size_t size) {
+  // size  = (size_t)ROUNDUP(size, 8);
+  // unsigned long int old = old_addr;
+  // printf("")
+  // old += size;
+  // assert((uintptr_t)heap.start <= (uintptr_t)old_addr && (uintptr_t)old_addr < (uintptr_t)heap.end);
+  // for (uint64_t *p = (uint64_t *)old; p != (uint64_t *)old_addr; p ++) {
+  //   *p = 0;
+  // }
+  // return (void*)old;
   return NULL;
 }
 

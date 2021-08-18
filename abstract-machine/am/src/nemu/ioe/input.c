@@ -3,7 +3,20 @@
 
 #define KEYDOWN_MASK 0x8000
 
-void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd) {
-  kbd->keydown = 0;
-  kbd->keycode = AM_KEY_NONE;
+void __am_input_keybrd(AM_INPUT_KEYBRD_T *kbd)
+{
+
+  // uint16_t status = inw(KBD_ADDR + 4);
+  uint32_t keycode = inw(KBD_ADDR);
+
+  if (keycode == AM_KEY_NONE)
+  {
+    kbd->keydown = false;
+    kbd->keycode = AM_KEY_NONE;
+  }
+  else
+  {
+    kbd->keydown = true;
+    kbd->keycode = keycode;
+  }
 }
