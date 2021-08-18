@@ -133,6 +133,7 @@ static inline def_EHelper(op_r)
     switch (s->isa.instr.r.funct3)
     {
       EXW(0, add_sub, 8)
+      EXW(1, sll, 8)
       EXW(2, slt, 8)
       EXW(3, sltu, 8)
       EXW(4, xorr, 8)
