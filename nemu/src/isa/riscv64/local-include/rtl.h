@@ -18,7 +18,7 @@ static inline def_rtl(jal, rtlreg_t *dest, const sword_t imm)
 
 static inline def_rtl(jalr, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
 {
-  vaddr_t target = (instr_sign_ext(imm) + *src1) & (~1);
+  vaddr_t target = (imm + *src1) & (~1);
   *dest = s->seq_pc;
   rtl_j(s, target);
 }
@@ -31,7 +31,7 @@ static inline def_rtl(jalr, rtlreg_t *dest, const rtlreg_t *src1, const sword_t 
 
 static inline def_rtl(sltiu, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
 {
-  if (*src1 < (word_t)(instr_sign_ext(imm)))
+  if (*src1 < (word_t)(imm))
     *dest = 1;
   else
     *dest = 0;
@@ -61,14 +61,12 @@ static inline def_rtl(slt, rtlreg_t *dest, const rtlreg_t *src1, const rtlreg_t 
     *dest = 0;
 }
 
-
 static inline def_rtl(beq, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
 {
   if ((sword_t)*src1 == (sword_t)*dest)
   {
     rtl_j(s, imm + s->seq_pc - 4);
   }
-
 }
 
 static inline def_rtl(bne, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
@@ -77,7 +75,6 @@ static inline def_rtl(bne, rtlreg_t *dest, const rtlreg_t *src1, const sword_t i
   {
     rtl_j(s, imm + s->seq_pc - 4);
   }
-
 }
 
 static inline def_rtl(bge, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
@@ -86,7 +83,6 @@ static inline def_rtl(bge, rtlreg_t *dest, const rtlreg_t *src1, const sword_t i
   {
     rtl_j(s, imm + s->seq_pc - 4);
   }
-
 }
 
 static inline def_rtl(blt, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
@@ -95,7 +91,6 @@ static inline def_rtl(blt, rtlreg_t *dest, const rtlreg_t *src1, const sword_t i
   {
     rtl_j(s, imm + s->seq_pc - 4);
   }
-
 }
 
 static inline def_rtl(bltu, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
@@ -104,7 +99,6 @@ static inline def_rtl(bltu, rtlreg_t *dest, const rtlreg_t *src1, const sword_t 
   {
     rtl_j(s, imm + s->seq_pc - 4);
   }
-
 }
 
 static inline def_rtl(bgeu, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
@@ -113,6 +107,5 @@ static inline def_rtl(bgeu, rtlreg_t *dest, const rtlreg_t *src1, const sword_t 
   {
     rtl_j(s, imm + s->seq_pc - 4);
   }
-
 }
 #endif
