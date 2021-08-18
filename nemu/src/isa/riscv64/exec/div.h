@@ -5,6 +5,13 @@ static inline def_EHelper(divw)
     
 }
 
+static inline def_EHelper(divuw)
+{
+    rtl_divuw(s, ddest, dsrc1, dsrc2);
+    print_asm_template3(divuw);
+    
+}
+
 static inline def_EHelper(divu)
 {
     rtl_div_q(s, ddest, dsrc1, dsrc2);

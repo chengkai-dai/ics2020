@@ -103,22 +103,24 @@ static inline def_EHelper(op_imm_32)
 static inline def_EHelper(op_r_32)
 {
   assert(s->isa.instr.r.funct7 == 0 || s->isa.instr.r.funct7 == 0x20 || s->isa.instr.r.funct7 == 0x1);
- if (!(s->isa.instr.r.funct7 == 0x1))
+  if (!(s->isa.instr.r.funct7 == 0x1))
   {
-  switch (s->isa.instr.r.funct3)
+    switch (s->isa.instr.r.funct3)
+    {
+      EXW(0, add_sub_w, 8)
+      EXW(1, shlrw, 8)
+      EXW(5, shrrw, 8)
+    default:
+      exec_inv(s);
+    }
+  }
+  else
   {
-    EXW(0, add_sub_w, 8)
-    EXW(1, shlrw, 8)
-    EXW(5, shrrw, 8)
-  default:
-    exec_inv(s);
-  }
-  }
-  else{
     switch (s->isa.instr.r.funct3)
     {
       EXW(0, mulw, 8)
       EXW(4, divw, 8)
+      EXW(5, divuw, 8)
       EXW(6, remw, 8)
       EXW(7, remuw, 8)
     default:
