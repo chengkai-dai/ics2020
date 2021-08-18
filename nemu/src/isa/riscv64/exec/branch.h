@@ -33,3 +33,10 @@ static inline def_EHelper(bltu)
 
     print_asm_template3(bltu);
 }
+
+static inline def_EHelper(bgeu)
+{
+    rtl_bgeu(s, ddest, dsrc1, id_src2->imm);
+
+    print_asm_template3(bgeu);
+}
