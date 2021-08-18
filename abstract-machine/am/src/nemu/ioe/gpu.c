@@ -40,30 +40,30 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl)
 
   uint32_t size = inl(VGACTL_ADDR);
   int width = size >> 16;
-  int height = (int)(int16_t)size;
+  // int height = (int)(int16_t)size;
+
+  uint32_t *pixel_info = (uint32_t *)(uintptr_t)FB_ADDR;
+  uint32_t *buffer = (uint32_t *)(uintptr_t)ctl->pixels;
+
+  // printf("width %d\n", width);
+  // printf("height %d\n", height);
+  // printf("x %d\n", ctl->x);
+  // printf("y %d\n", ctl->y);
+  // printf("w %d\n", ctl->w);
+  // printf("h %d\n", ctl->h);
+
+  for (int i = 0; i < ctl->h; ++i)
+  {
+    for (int j = 0; j < ctl->w; ++j)
+    {
+      // *(pixel_info + ctl->x + i * width + j) = inl(VGACTL_ADDR + 4 * (ctl->x + i * width + j));
+      pixel_info[ctl->y * width + ctl->x + i * width + j] = buffer[ctl->x * i + j];
+    }
+  }
 
   if (ctl->sync)
   {
     outl(SYNC_ADDR, 1);
-
-    uint32_t *pixel_info = (uint32_t *)(uintptr_t)FB_ADDR;
-    uint32_t *buffer = (uint32_t *)(uintptr_t)ctl->pixels;
-
-    printf("width %d\n",width);
-    printf("height %d\n",height);
-    printf("x %d\n",ctl->x);
-    printf("y %d\n",ctl->y);
-    printf("w %d\n",ctl->w);
-    printf("h %d\n",ctl->h);
-
-    for (int i = 0; i < ctl->h; ++i)
-    {
-      for (int j = 0; j < ctl->w; ++j)
-      {
-        // *(pixel_info + ctl->x + i * width + j) = inl(VGACTL_ADDR + 4 * (ctl->x + i * width + j));
-        pixel_info[ctl->y * width + ctl->x + i * width + j] = buffer[ctl->y * width + ctl->x + i * width + j];
-      }
-    }
   }
 }
 
