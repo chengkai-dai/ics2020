@@ -11,3 +11,10 @@ static inline def_EHelper(remuw)
     print_asm_template3(remuw);
     
 }
+
+static inline def_EHelper(rem)
+{
+    rtl_idiv_r(s, ddest, dsrc1, dsrc2);
+    print_asm_template3(rem);
+    
+}
