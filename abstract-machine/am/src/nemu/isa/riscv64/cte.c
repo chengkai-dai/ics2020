@@ -15,6 +15,9 @@ Context *__am_irq_handle(Context *c)
     
     switch (c->cause)
     {
+      case 1:
+      printf("test1\n");
+      break;
     default:
       ev.event = EVENT_ERROR;
       break;
