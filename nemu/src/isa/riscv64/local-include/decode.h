@@ -29,14 +29,14 @@ static inline def_DopHelper(csr)
   printf("pc 0x%lx\n",s->seq_pc);
 
   // assert(val==0x105 || val==0x0 || val==0x41 || val==0x42);
-  assert(val==0x105 || val==0x0 || val==0x142);
+  assert(val==0x105 || val==0x0 || val==0x142 || val==0x100);
 
   op->type = OP_TYPE_REG;
   op->reg = val;
 
-  if(val==0x0){
+  if(val==0x100){
     op->preg = &cpu.csr[0]._64;
-    print_Dop(op->str, OP_STR_SIZE, "%s", "ustatus");
+    print_Dop(op->str, OP_STR_SIZE, "%s", "sstatus");
   }
   else if(val==0x105){
     op->preg = &cpu.csr[3]._64;
