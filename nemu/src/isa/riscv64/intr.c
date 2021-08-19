@@ -13,7 +13,8 @@ void raise_intr(DecodeExecState *s, word_t NO, vaddr_t epc)
   //4.跳转到异常入口地址
   // cpu.csr[2]=NO;
   // cpu.csr[1]=cpu.pc;
-  // s->seq_pc = cpu.csr[1]._64 + NO * sizeof(vaddr_t);
+  // s->seq_pc = cpu.csr[1]._64;
+  TODO();
 }
 
 void query_intr(DecodeExecState *s)
