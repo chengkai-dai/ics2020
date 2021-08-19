@@ -13,7 +13,7 @@ Context *__am_irq_handle(Context *c)
     printf("c->epc %d\n", c->epc);
     printf("c->status %d\n", c->status);
     
-    switch (c->cause)
+    switch (c->status)
     {
       case 1:
       printf("test1\n");
