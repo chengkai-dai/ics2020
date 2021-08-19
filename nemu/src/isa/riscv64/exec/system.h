@@ -15,6 +15,7 @@ static inline def_EHelper(ecall)
     // s->seq_pc = cpu.csr[3]._64;
     // print_asm("ecall\n");
 
-    raise_intr(s,0,cpu.pc);
+    raise_intr(s,0,s->seq_pc);
     print_asm("ecall\n");
+    printf("epc %lx\n",cpu.csr[1]._64);
 }
