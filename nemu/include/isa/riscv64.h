@@ -19,7 +19,7 @@ typedef struct
   union
   {
     rtlreg_t _64;
-  } csr[1];
+  } csr[3];
 
   vaddr_t pc;
 } riscv64_CPU_state;
