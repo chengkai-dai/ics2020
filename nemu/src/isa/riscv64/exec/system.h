@@ -9,8 +9,8 @@ static inline def_EHelper(ecall)
     //save $pc in $sepc
     //change mode from user to supervisor -- we can't see this
 
+    *(&cpu.csr[1]._64) = s->seq_pc;
     s->seq_pc = cpu.csr[3]._64;
-    *(&cpu.csr[1]._64) = cpu.pc;
     printf("epc 0x%lx\n",cpu.csr[1]._64);
     printf("seq_pc 0x%lx\n",s->seq_pc);
 
