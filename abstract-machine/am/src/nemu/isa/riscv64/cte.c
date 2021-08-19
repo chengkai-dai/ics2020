@@ -10,7 +10,7 @@ Context *__am_irq_handle(Context *c)
   {
     Event ev = {0};
 
-    switch (c->status)
+    switch (c->epc)
     {
       case 1:
       printf("test1\n");
