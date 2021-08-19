@@ -26,6 +26,7 @@ static inline def_DopHelper(csr)
 {
   printf("csr index 0x%lx\n",(word_t)s->isa.instr.csr.csr);
   printf("csr val 0x%lx\n",*(id_src2->preg));
+  // assert(val==0x105 || val==0x0 || val==0x41 || val==0x42);
   assert(val==0x105 || val==0x0);
 
   op->type = OP_TYPE_REG;
@@ -36,7 +37,7 @@ static inline def_DopHelper(csr)
     print_Dop(op->str, OP_STR_SIZE, "%s", "ustatus");
   }
   else if(val==0x105){
-    op->preg = &cpu.csr[1]._64;
+    op->preg = &cpu.csr[3]._64;
     print_Dop(op->str, OP_STR_SIZE, "%s", "stvec");
   }
 
