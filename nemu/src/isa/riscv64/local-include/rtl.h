@@ -117,4 +117,19 @@ static inline def_rtl(csrrw, rtlreg_t *dest, rtlreg_t *src1,  rtlreg_t *src2)
 
 }
 
+//The CSRRS (Atomic Read and Set Bits in CSR) instruction reads the value of the CSR, zeroextends
+//the value to XLEN bits, and writes it to integer register rd. The initial value in integer
+//register rs1 is treated as a bit mask that specifies bit positions to be set in the CSR. Any bit that
+//is high in rs1 will cause the corresponding bit to be set in the CSR, if that CSR bit is writable.
+//Other bits in the CSR are not explicitly written.
+
+static inline def_rtl(csrrs, rtlreg_t *dest, rtlreg_t *src1,  rtlreg_t *src2)
+{
+  printf("before csr 0x%lx\n",*src2);
+  *dest=*src2;
+  *src2=*src2 | *src1;
+  printf("after csr 0x%lx\n",*src2);
+
+}
+
 #endif

@@ -167,6 +167,8 @@ static inline def_EHelper(sys)
   {
     EXW(0, ecall, 8)
     EXW(1, csrrw, 8)
+    EXW(2, csrrs, 8)
+
   default:
     exec_inv(s);
   }
