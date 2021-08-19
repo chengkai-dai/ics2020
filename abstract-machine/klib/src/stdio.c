@@ -12,7 +12,7 @@ int vsprintf(char *out, char const *fmt, va_list arg)
   char ch;
   int length = 0;
 
-  char buffer[1024];
+  char buffer[2048];
 
   int int_temp;
   char *string_temp;
@@ -86,7 +86,7 @@ int printf(const char *fmt, ...)
   va_list arg;
   int done;
   va_start(arg, fmt);
-  char buff[1024];
+  char buff[2048];
   done = vsprintf(buff, fmt, arg);
   va_end(arg);
 
