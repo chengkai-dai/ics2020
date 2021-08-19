@@ -24,6 +24,9 @@ static inline def_DopHelper(r)
 
 static inline def_DopHelper(csr)
 {
+  printf("csr index 0x%lx\n",(word_t)s->isa.instr.csr.csr);
+  printf("csr val 0x%lx\n",*(id_src2->preg));
+  
   op->type = OP_TYPE_REG;
   op->reg = val;
 
@@ -100,7 +103,6 @@ static inline def_DHelper(CSR)
   decode_op_r(s, id_src1, s->isa.instr.csr.rs1, false);
   decode_op_r(s, id_dest, s->isa.instr.i.rd, false);
   decode_op_csr(s, id_src2, (word_t)s->isa.instr.csr.csr, false);
-  printf("csr index 0x%lx\n",(word_t)s->isa.instr.csr.csr);
-  printf("csr val 0x%lx\n",*(id_src2->preg));
+  
 
 }
