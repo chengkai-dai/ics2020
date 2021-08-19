@@ -9,6 +9,7 @@ const char *regs[] = {
 };
 
 void isa_reg_display() {
+  printf("pc 0x%lx\n",cpu.pc);
   printf("zero 0x%lx\n",reg_d(0));
   printf("ra 0x%lx\n",reg_d(1));
   printf("sp 0x%lx\n",reg_d(2));
