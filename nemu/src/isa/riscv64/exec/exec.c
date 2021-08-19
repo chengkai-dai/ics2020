@@ -200,10 +200,10 @@ vaddr_t isa_exec_once()
 
   fetch_decode_exec(&s);
 
-    printf("before pc 0x%lx\n",cpu.pc);
+    // printf("before pc 0x%lx\n",cpu.pc);
 
   update_pc(&s);
-    printf("after pc 0x%lx\n",cpu.pc);
+    // printf("after pc 0x%lx\n",cpu.pc);
 
   reset_zero();
 
