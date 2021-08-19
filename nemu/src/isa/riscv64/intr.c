@@ -14,7 +14,11 @@ void raise_intr(DecodeExecState *s, word_t NO, vaddr_t epc)
   // cpu.csr[2]=NO;
   // cpu.csr[1]=cpu.pc;
   // s->seq_pc = cpu.csr[1]._64;
-  TODO();
+  //TODO();
+
+  *(&cpu.csr[2]._64)=NO;
+  *(&cpu.csr[1]._64)=epc;
+  s->seq_pc = cpu.csr[1]._64;
 }
 
 void query_intr(DecodeExecState *s)
