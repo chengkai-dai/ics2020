@@ -86,7 +86,7 @@ int printf(const char *fmt, ...)
   va_list arg;
   int done;
   va_start(arg, fmt);
-  char buff[512];
+  char buff[1024];
   done = vsprintf(buff, fmt, arg);
   va_end(arg);
 
