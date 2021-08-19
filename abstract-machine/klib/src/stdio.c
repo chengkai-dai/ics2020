@@ -12,7 +12,7 @@ int vsprintf(char *out, char const *fmt, va_list arg)
   char ch;
   int length = 0;
 
-  char buffer[512];
+  char buffer[1024];
 
   int int_temp;
   char *string_temp;
