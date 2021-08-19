@@ -161,6 +161,16 @@ static inline def_EHelper(op_r)
   }
 }
 
+static inline def_EHelper(sys)
+{
+  switch (s->isa.instr.csr.funct3)
+  {
+    EXW(1, csrrw, 8)
+  default:
+    exec_inv(s);
+  }
+}
+
 static inline void fetch_decode_exec(DecodeExecState *s)
 {
   s->isa.instr.val = instr_fetch(&s->seq_pc, 4);
@@ -180,6 +190,8 @@ static inline void fetch_decode_exec(DecodeExecState *s)
     IDEX(0b11000, B, branch)
     IDEX(0b11001, I, jalr)
     IDEX(0b11011, J, jal)
+    IDEX(0b11100, CSR, sys)
+
     EX(0b11010, nemu_trap)
   default:
     exec_inv(s);

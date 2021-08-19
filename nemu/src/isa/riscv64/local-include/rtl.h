@@ -109,4 +109,12 @@ static inline def_rtl(bgeu, rtlreg_t *dest, const rtlreg_t *src1, const sword_t 
     rtl_j(s, imm + s->seq_pc - 4);
   }
 }
+
+static inline def_rtl(csrrw, rtlreg_t *dest, rtlreg_t *src1,  rtlreg_t *src2)
+{
+  *dest=*src2;
+  *src2=*src1;
+
+}
+
 #endif
