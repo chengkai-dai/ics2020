@@ -203,7 +203,7 @@ vaddr_t isa_exec_once()
     printf("before pc 0x%lx\n",cpu.pc);
 
   update_pc(&s);
-    printf("before pc 0x%lx\n",cpu.pc);
+    printf("after pc 0x%lx\n",cpu.pc);
 
   reset_zero();
 
