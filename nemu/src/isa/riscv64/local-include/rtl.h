@@ -125,11 +125,8 @@ static inline def_rtl(csrrw, rtlreg_t *dest, rtlreg_t *src1,  rtlreg_t *src2)
 
 static inline def_rtl(csrrs, rtlreg_t *dest, rtlreg_t *src1,  rtlreg_t *src2)
 {
-  printf("before csr 0x%lx\n",*src2);
   *dest=*src2;
   *src2=*src2 | *src1;
-  printf("after csr 0x%lx\n",*src2);
-
 }
 
 #endif
