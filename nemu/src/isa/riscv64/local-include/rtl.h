@@ -19,6 +19,8 @@ static inline def_rtl(jal, rtlreg_t *dest, const sword_t imm)
 static inline def_rtl(jalr, rtlreg_t *dest, const rtlreg_t *src1, const sword_t imm)
 {
   vaddr_t target = (imm + *src1) & (~1);
+  printf("jalr *src1 0x%lx\n",*src1);
+  printf("jalr imm 0x%lx\n",imm);
   *dest = s->seq_pc;
   rtl_j(s, target);
 }
