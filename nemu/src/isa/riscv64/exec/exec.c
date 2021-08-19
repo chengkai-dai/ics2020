@@ -197,14 +197,13 @@ vaddr_t isa_exec_once()
   s.is_jmp = 0;
   s.seq_pc = cpu.pc;
 
-  word_t oldpc=cpu.pc;
 
   fetch_decode_exec(&s);
 
-  if(s.seq_pc==0x232323232323230a){
-    printf("before pc 0x%lx\n",oldpc);
-  }
+    printf("before pc 0x%lx\n",cpu.pc);
+
   update_pc(&s);
+    printf("before pc 0x%lx\n",cpu.pc);
 
   reset_zero();
 
