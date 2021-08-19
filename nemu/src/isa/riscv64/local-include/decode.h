@@ -29,7 +29,7 @@ static inline def_DopHelper(csr)
   printf("pc 0x%lx\n",s->seq_pc);
 
   // assert(val==0x105 || val==0x0 || val==0x41 || val==0x42);
-  assert(val==0x105 || val==0x0 || val==0x142 || val==0x100);
+  assert(val==0x105 || val==0x0 || val==0x141 || val==0x142 || val==0x100);
 
   op->type = OP_TYPE_REG;
   op->reg = val;
@@ -41,6 +41,10 @@ static inline def_DopHelper(csr)
   else if(val==0x105){
     op->preg = &cpu.csr[3]._64;
     print_Dop(op->str, OP_STR_SIZE, "%s", "stvec");
+  }
+  else if(val==0x141){
+    op->preg = &cpu.csr[1]._64;
+    print_Dop(op->str, OP_STR_SIZE, "%s", "sepc");
   }
 
   else if(val==0x142){
