@@ -165,7 +165,7 @@ static inline def_EHelper(sys)
 {
   switch (s->isa.instr.csr.funct3)
   {
-    EXW(0, ecall, 8)
+    EXW(0, syscall, 8)
     EXW(1, csrrw, 8)
     EXW(2, csrrs, 8)
 

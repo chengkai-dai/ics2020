@@ -1,6 +1,6 @@
 extern void raise_intr(DecodeExecState *s, word_t NO, vaddr_t epc);
 
-static inline def_EHelper(ecall)
+static inline def_EHelper(syscall)
 {
     // assert(s->isa.instr.csr.csr==0 && s->isa.instr.csr.rd==0 || s->isa.instr.csr.rs1==0);
     // raise_intr(s, ddest, dsrc1, dsrc2);
@@ -14,7 +14,17 @@ static inline def_EHelper(ecall)
     // *(&cpu.csr[1]._64) = s->seq_pc;
     // s->seq_pc = cpu.csr[3]._64;
     // print_asm("ecall\n");
-
-    raise_intr(s,1,s->seq_pc);
-    print_asm("ecall\n");
+    assert(s->isa.instr.csr.rd == 0 || s->isa.instr.csr.rs1 == 0);
+    if (s->isa.instr.csr.csr == 0)
+    {
+        //ecall
+        raise_intr(s, 1, cpu.pc);
+        print_asm("ecall\n");
+    }
+    else if (s->isa.instr.csr.csr == 0x102)
+    {
+        //sret
+        s->seq_pc=cpu.csr[1]._64;
+        print_asm("sret\n");
+    }
 }

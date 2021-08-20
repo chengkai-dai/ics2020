@@ -24,12 +24,12 @@ static inline def_DopHelper(r)
 
 static inline def_DopHelper(csr)
 {
-  printf("csr index 0x%lx\n",(word_t)s->isa.instr.csr.csr);
-  printf("csr val 0x%lx\n",*(id_src2->preg));
-  printf("pc 0x%lx\n",s->seq_pc);
+  // printf("csr index 0x%lx\n",(word_t)s->isa.instr.csr.csr);
+  // printf("csr val 0x%lx\n",*(id_src2->preg));
+  // printf("pc 0x%lx\n",s->seq_pc);
 
   // assert(val==0x105 || val==0x0 || val==0x41 || val==0x42);
-  assert(val==0x105 || val==0x0 || val==0x141 || val==0x142 || val==0x100);
+  assert(val==0x105 || val==0x141 || val==0x142 || val==0x100 || val==0x0 || val==0x102);
 
   op->type = OP_TYPE_REG;
   op->reg = val;
