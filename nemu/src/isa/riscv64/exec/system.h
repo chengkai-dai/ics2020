@@ -25,7 +25,6 @@ static inline def_EHelper(syscall)
     {
         //sret
         s->seq_pc=cpu.csr[1]._64+4;
-        printf("s->seq_pc 0x%lx",s->seq_pc);
         print_asm("sret\n");
     }
 }
