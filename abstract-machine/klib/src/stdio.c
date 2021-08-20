@@ -14,7 +14,7 @@ int vsprintf(char *out, char const *fmt, va_list arg)
 
   char buffer[2048];
 
-  int int_temp;
+  uint64_t int_temp;
   char *string_temp;
 
   // char char_temp;
