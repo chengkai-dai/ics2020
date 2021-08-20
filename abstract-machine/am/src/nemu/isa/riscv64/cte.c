@@ -8,6 +8,9 @@ Context *__am_irq_handle(Context *c)
 {
   if (user_handler)
   {
+    printf("c->cause %d\n",c->cause);
+    printf("c->status %d\n",c->status);
+    printf("c->epc %d\n",c->epc);
     Event ev = {0};
     switch (c->cause)
     {
