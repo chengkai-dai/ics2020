@@ -106,10 +106,10 @@ int itoa(uint64_t num, char *str, int base)
 {
   uint64_t sum = num;
   int i = 0;
-  int digit;
+  uint64_t digit;
   do
   {
-    digit = sum % base;
+    digit = sum % (uint64_t)base;
     if (digit < 0xA)
       str[i++] = '0' + digit;
     else
