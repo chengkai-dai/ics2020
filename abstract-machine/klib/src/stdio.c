@@ -47,6 +47,13 @@ int vsprintf(char *out, char const *fmt, va_list arg)
         length += strlen(buffer);
         break;
 
+      case 'x':
+        int_temp = va_arg(arg, int);
+        itoa(int_temp, buffer, 16);
+        strcpy(out + length, buffer);
+        length += strlen(buffer);
+        break;
+
         // /* %x: print out an int in hex  */
         // case 'x':
         //   int_temp = va_arg(arg, int);
