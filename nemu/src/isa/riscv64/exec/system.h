@@ -24,7 +24,7 @@ static inline def_EHelper(syscall)
     else if (s->isa.instr.csr.csr == 0x102)
     {
         //sret
-        s->seq_pc=cpu.csr[1]._64;
+        s->seq_pc=cpu.csr[1]._64+4;
         print_asm("sret\n");
     }
 }
