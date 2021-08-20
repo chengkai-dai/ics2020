@@ -43,6 +43,7 @@ int vsprintf(char *out, char const *fmt, va_list arg)
       /* %d: print out an int         */
       case 'd':
         int_temp_u = va_arg(arg, uint64_t);
+        assert(int_temp_u>>63==0);//TODO: printing negtive number is not implemented.
         utoa(int_temp_u, buffer, 10);
         strcpy(out + length, buffer);
         length += strlen(buffer);
