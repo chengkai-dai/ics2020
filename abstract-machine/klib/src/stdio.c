@@ -41,14 +41,14 @@ int vsprintf(char *out, char const *fmt, va_list arg)
 
       /* %d: print out an int         */
       case 'd':
-        int_temp = va_arg(arg, int);
+        int_temp = va_arg(arg, uint64_t);
         itoa(int_temp, buffer, 10);
         strcpy(out + length, buffer);
         length += strlen(buffer);
         break;
 
       case 'x':
-        int_temp = va_arg(arg, int);
+        int_temp = va_arg(arg, uint64_t);
         itoa(int_temp, buffer, 16);
         strcpy(out + length, buffer);
         length += strlen(buffer);
