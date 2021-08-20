@@ -102,9 +102,9 @@ int memcmp(const void *s1, const void *s2, size_t n)
 
 //Other string ultilities
 
-int itoa(int num, char *str, int base)
+int itoa(uint64_t num, char *str, int base)
 {
-  int sum = num;
+  uint64_t sum = num;
   int i = 0;
   int digit;
   do
