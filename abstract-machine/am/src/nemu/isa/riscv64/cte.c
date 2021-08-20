@@ -9,7 +9,7 @@ Context *__am_irq_handle(Context *c)
   if (user_handler)
   {
     Event ev = {0};
-    switch (c->cause)
+    switch (*(uintptr_t*)(c->pdir))
     {
       case 1:
       printf("test1\n");
