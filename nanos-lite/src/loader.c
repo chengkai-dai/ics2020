@@ -5,6 +5,8 @@ extern uint8_t ramdisk_start;
 extern uint8_t ramdisk_end;
 #define RAMDISK_SIZE ((&ramdisk_end) - (&ramdisk_start))
 
+extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
+
 #ifdef __LP64__
 #define Elf_Ehdr Elf64_Ehdr
 #define Elf_Phdr Elf64_Phdr
@@ -28,8 +30,13 @@ static uintptr_t loader(PCB *pcb, const char *filename)
 
   for (; ph < eph; ++ph)
   {
+    printf("1111\n");
     if (ph->p_type == PT_LOAD)
     {
+      // void buf[1024];
+      
+      // ramdisk_read(buf, (void *)ph->p_offset, ph->p_memsz);
+
       memcpy((void *)ph->p_vaddr, (void *)ph->p_offset, ph->p_memsz);
 
       if (ph->p_memsz > ph->p_filesz)
