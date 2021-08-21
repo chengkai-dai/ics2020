@@ -48,9 +48,9 @@ static uintptr_t loader(PCB *pcb, const char *filename)
     
   }
 
-  // volatile uint32_t entry = elf->e_entry;
+  volatile uint32_t entry = elf->e_entry;
 
-  uint32_t entry = elf->e_entry;
+  // uint32_t entry = elf->e_entry;
 
   return entry;
 }
