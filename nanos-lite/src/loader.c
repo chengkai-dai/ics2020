@@ -20,7 +20,6 @@ static uintptr_t loader(PCB *pcb, const char *filename)
 
   elf = (void *)(&ramdisk_start);
   Log("ELF loading from ram disk.");
-  Log("magic %x\n",*(uint32_t *)elf->e_ident);
 
   assert(*(uint32_t *)elf->e_ident == 0x464c457f);
 
@@ -41,8 +40,6 @@ static uintptr_t loader(PCB *pcb, const char *filename)
   // volatile uint32_t entry = elf->e_entry;
 
   uint32_t entry = elf->e_entry;
-
-  Log("e_entry 0x%x\n", entry);
 
   return entry;
 }
