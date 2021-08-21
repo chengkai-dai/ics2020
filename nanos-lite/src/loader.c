@@ -25,13 +25,17 @@ static uintptr_t loader(PCB *pcb, const char *filename)
 
   assert(*(uint32_t *)elf->e_ident == 0x464c457f);
 
-  ph = (void *)(elf + elf->e_phoff);
+  // void buf[1024];
+      
+  // ramdisk_read(buf, (void *)ph->p_offset, ph->p_memsz);
+
+
+
+  ph = (void *)elf + elf->e_phoff;
   eph = ph + elf->e_phnum;
 
   for (; ph < eph; ++ph)
   {
-    printf("1111\n");
-    printf("ph->p_type %d\n",ph->p_type);
 
     if (ph->p_type == PT_LOAD)
     {
