@@ -2,6 +2,8 @@
 #include <elf.h>
 
 extern uint8_t ramdisk_start;
+extern uint8_t ramdisk_end;
+#define RAMDISK_SIZE ((&ramdisk_end) - (&ramdisk_start))
 
 #ifdef __LP64__
 #define Elf_Ehdr Elf64_Ehdr
