@@ -42,7 +42,7 @@ int vsprintf(char *out, char const *fmt, va_list arg)
 
       /* %d: print out an int         */
       case 'd':
-        int_temp_u = va_arg(arg, uint64_t);
+        int_temp_u = va_arg(arg, uint32_t);
         assert(int_temp_u>>63==0);//TODO: printing negtive number is not implemented.
         utoa(int_temp_u, buffer, 10);
         strcpy(out + length, buffer);
@@ -50,7 +50,7 @@ int vsprintf(char *out, char const *fmt, va_list arg)
         break;
 
       case 'x':
-        int_temp_u = va_arg(arg, uint64_t);
+        int_temp_u = va_arg(arg, uint32_t);
         utoa(int_temp_u, buffer, 16);
         strcpy(out + length, buffer);
         length += strlen(buffer);
