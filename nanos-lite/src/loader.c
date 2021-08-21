@@ -33,6 +33,8 @@ static uintptr_t loader(PCB *pcb, const char *filename)
     printf("1111\n");
     if (ph->p_type == PT_LOAD)
     {
+          printf("PT_LOAD\n");
+
       // void buf[1024];
       
       // ramdisk_read(buf, (void *)ph->p_offset, ph->p_memsz);
