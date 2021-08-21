@@ -20,7 +20,7 @@ static uintptr_t loader(PCB *pcb, const char *filename)
 
   elf = (void *)(&ramdisk_start);
   Log("ELF loading from ram disk.");
-  Log("magic %x\n",elf->e_ident);
+  Log("magic %x\n",*(uint32_t *)elf->e_ident);
 
   assert(*(uint32_t *)elf->e_ident == 0x464c457f);
 
