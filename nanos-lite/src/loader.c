@@ -40,19 +40,13 @@ static uintptr_t loader(PCB *pcb, const char *filename)
     if (ph->p_type == PT_LOAD)
     {
       printf("PT_LOAD\n");
-
-      // void buf[1024];
       
-      // ramdisk_read(buf, (size_t *)ph->p_offset, ph->p_memsz);
+      ramdisk_read((void *)ph->p_vaddr, ph->p_offset, ph->p_memsz);
 
-      // memcpy((void *)ph->p_vaddr, buf, ph->p_memsz);
-
-      // if (ph->p_memsz > ph->p_filesz)
-      //   memset((void *)ph->p_vaddr + ph->p_filesz, 0, (ph->p_memsz - ph->p_filesz));
+      if (ph->p_memsz > ph->p_filesz)
+        memset((void *)ph->p_vaddr + ph->p_filesz, 0, (ph->p_memsz - ph->p_filesz));
     }
-    else{
-      printf("PT_UNLOAD\n");
-    }
+    
   }
 
   // volatile uint32_t entry = elf->e_entry;
