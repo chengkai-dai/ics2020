@@ -31,6 +31,8 @@ static uintptr_t loader(PCB *pcb, const char *filename)
   for (; ph < eph; ++ph)
   {
     printf("1111\n");
+    printf("ph->p_type %d\n",ph->p_type);
+
     if (ph->p_type == PT_LOAD)
     {
           printf("PT_LOAD\n");
