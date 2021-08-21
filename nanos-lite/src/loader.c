@@ -44,6 +44,9 @@ static uintptr_t loader(PCB *pcb, const char *filename)
       if (ph->p_memsz > ph->p_filesz)
         memset((void *)ph->p_vaddr + ph->p_filesz, 0, (ph->p_memsz - ph->p_filesz));
     }
+    else{
+      printf("PT_UNLOAD\n");
+    }
   }
 
   // volatile uint32_t entry = elf->e_entry;
