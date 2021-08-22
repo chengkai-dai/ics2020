@@ -16,7 +16,7 @@ static inline int sys_write(int fd, const void *buf, size_t count)
     return -1;
 }
 
-static inline int sys_brk(int increment)
+static inline int sys_brk(int addr)
 {
   return 0;
   
