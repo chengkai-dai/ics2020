@@ -132,33 +132,23 @@ static inline int abs(int num)
 
 int itoa(int num, char *str, int base)
 {
-  // int sum = num;
-  // int i = 0;
-  // int digit;
-  // do
-  // {
-  //   digit = sum % base;
-  //   if (digit < 0xA)
-  //     str[i++] = '0' + digit;
-  //   else
-  //     str[i++] = 'A' + digit - 0xA;
-  //   sum /= base;
-  // } while (sum);
 
-  // str[i] = '\0';
-  // strrev(str);
-  // return 0;
   int i, sign;
 
   sign = num;
-
+  int digit;
   i = 0;
 
   do
   {
-    str[i++] = abs(num % 10) + '0';
+    // str[i++] = abs(num % 10) + '0';
+    digit = abs(num % base);
+    if (digit < 0xA)
+      str[i++] = '0' + digit;
+    else
+      str[i++] = 'A' + digit - 0xA;
 
-  } while ((num /= 10) != 0);
+  } while ((num /= base) != 0);
 
   if (sign < 0)
     str[i++] = '-';
