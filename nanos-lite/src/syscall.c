@@ -11,25 +11,15 @@ void do_syscall(Context *c)
     printf("yield\n");
     break;
   case SYS_exit:
-
-    printf("ret value 0x%x\n", c->GPRx);
-
     halt(c->GPRx);
-  // case SYS_exit:
-  // break;
+    break;
   case SYS_yield:
-    // printf("id %d\n", a[0]);
     yield();
-    c->GPRx = 1;
+    c->GPRx = 0;
     break;
 
   default:
     panic("Unhandled syscall ID = %d", a[0]);
   }
 
-  // uintptr_t ret = c->GPRx;
-
-  // printf("ret value 0x%x\n", ret);
-
-  // halt(ret);
 }
