@@ -16,6 +16,13 @@ static inline int sys_write(int fd, const void *buf, size_t count)
     return -1;
 }
 
+static inline int sys_brk(int increment)
+{
+  printf("sys_brk\n");
+  return -1;
+  
+}
+
 void do_syscall(Context *c)
 {
   uintptr_t a[4];
@@ -34,8 +41,10 @@ void do_syscall(Context *c)
     c->GPRx = 0;
     break;
   case SYS_write:
-    // printf("len %d\n", c->GPR4);
     c->GPRx = sys_write(c->GPR2, (void *)c->GPR3, c->GPR4);
+    break;
+  case SYS_brk:
+    c->GPRx =sys_brk(c->GPR2);
     break;
 
   default:
