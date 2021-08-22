@@ -137,8 +137,8 @@ int itoa(int num, char *str, int base)
     sum /= base;
   } while (sum);
 
-  str[i] = '\0';
   strrev(str);
+  str[i] = '\0';
   return 0;
 }
 
