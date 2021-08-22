@@ -8,7 +8,7 @@ void do_syscall(Context *c) {
     // case SYS_exit:
     // break;
     case SYS_yield:
-    printf("sys yield");
+    printf("sys yield\n");
     break;
 
 
