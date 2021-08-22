@@ -16,8 +16,7 @@ void do_syscall(Context *c)
     break;
 
   default:
-  break;
-    //panic("Unhandled syscall ID = %d", a[0]);
+    panic("Unhandled syscall ID = %d", a[0]);
   }
 
   uintptr_t ret = c->GPRx;
