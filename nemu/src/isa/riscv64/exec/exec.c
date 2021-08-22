@@ -209,7 +209,7 @@ static inline void reset_zero()
 
 vaddr_t isa_exec_once()
 {
-  printf("0x%lx\n",cpu.pc);
+  // printf("0x%lx\n",cpu.pc);
   DecodeExecState s;
   s.is_jmp = 0;
   s.seq_pc = cpu.pc;
