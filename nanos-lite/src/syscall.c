@@ -34,12 +34,11 @@ void do_syscall(Context *c)
     c->GPRx = 0;
     break;
   case SYS_write:
-  printf("len %d\n",c->GPR4);
-    c->GPRx=sys_write(c->GPR2,(void*)c->GPR3,c->GPR4);
+    printf("len %d\n", c->GPR4);
+    c->GPRx = sys_write(c->GPR2, (void *)c->GPR3, c->GPR4);
     break;
 
   default:
     panic("Unhandled syscall ID = %d", a[0]);
   }
 }
-
