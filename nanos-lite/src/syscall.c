@@ -10,6 +10,7 @@ void do_syscall(Context *c)
   // case SYS_exit:
   // break;
   case SYS_yield:
+    printf("id %d\n", a[0]);
     yield();
     break;
 
