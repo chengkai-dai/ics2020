@@ -122,25 +122,51 @@ int utoa(uint64_t num, char *str, int base)
   return 0;
 }
 
-int itoa(int num, char *str, int base)
+static inline int abs(int num)
 {
-  int sum = num;
-  int i = 0;
-  int digit;
-  do
-  {
-    digit = sum % base;
-    if (digit < 0xA)
-      str[i++] = '0' + digit;
-    else
-      str[i++] = 'A' + digit - 0xA;
-    sum /= base;
-  } while (sum);
-
-  strrev(str);
-  str[i] = '\0';
-  return 0;
+  if (num < 0)
+    return -num;
+  else
+    return num;
 }
 
+int itoa(int num, char *str, int base)
+{
+  // int sum = num;
+  // int i = 0;
+  // int digit;
+  // do
+  // {
+  //   digit = sum % base;
+  //   if (digit < 0xA)
+  //     str[i++] = '0' + digit;
+  //   else
+  //     str[i++] = 'A' + digit - 0xA;
+  //   sum /= base;
+  // } while (sum);
+
+  // str[i] = '\0';
+  // strrev(str);
+  // return 0;
+  int i, sign;
+
+  sign = num;
+
+  i = 0;
+
+  do
+  {
+    str[i++] = abs(num % 10) + '0';
+
+  } while ((num /= 10) != 0);
+
+  if (sign < 0)
+    str[i++] = '-';
+
+  str[i] = '\0';
+
+  strrev(str);
+  return 0;
+}
 
 #endif
