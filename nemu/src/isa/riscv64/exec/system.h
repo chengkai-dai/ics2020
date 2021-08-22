@@ -18,11 +18,13 @@ static inline def_EHelper(syscall)
     if (s->isa.instr.csr.csr == 0)
     {
         //ecall
-        bool success;
-        word_t syscall_id = isa_reg_str2val("a7", &success);
-        printf("do No. %ld syscall\n",syscall_id);
-        assert(success == true);
-        raise_intr(s, syscall_id, cpu.pc);
+        //bool success;
+        // word_t syscall_id = isa_reg_str2val("a7", &success);
+        // printf("do No. %ld syscall\n",syscall_id);
+        //assert(success == true);
+        //raise_intr(s, syscall_id, cpu.pc);
+        raise_intr(s, 1, cpu.pc);
+
         print_asm("ecall\n");
     }
     else if (s->isa.instr.csr.csr == 0x102)
