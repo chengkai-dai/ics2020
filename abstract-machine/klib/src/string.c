@@ -122,4 +122,25 @@ int utoa(uint64_t num, char *str, int base)
   return 0;
 }
 
+int itoa(int num, char *str, int base)
+{
+  int sum = num;
+  int i = 0;
+  int digit;
+  do
+  {
+    digit = sum % base;
+    if (digit < 0xA)
+      str[i++] = '0' + digit;
+    else
+      str[i++] = 'A' + digit - 0xA;
+    sum /= base;
+  } while (sum);
+
+  str[i] = '\0';
+  strrev(str);
+  return 0;
+}
+
+
 #endif

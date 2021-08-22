@@ -26,6 +26,7 @@ int    strncmp   (const char *s1, const char *s2, size_t n);
 //new implemention
 void strrev(char *str);
 int utoa(uint64_t num, char *str, int base);
+int itoa(int num, char *str, int base);
 
 // stdlib.h
 int    atoi      (const char *nptr);
