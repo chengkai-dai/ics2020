@@ -20,6 +20,7 @@ static inline def_EHelper(syscall)
         //ecall
         bool success;
         word_t syscall_id = isa_reg_str2val("a7", &success);
+        printf("do No. %ld syscall\n",syscall_id);
         assert(success == true);
         raise_intr(s, syscall_id, cpu.pc);
         print_asm("ecall\n");
