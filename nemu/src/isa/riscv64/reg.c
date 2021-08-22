@@ -25,8 +25,8 @@ void isa_reg_display() {
   printf("a2 0x%lx\n",reg_d(12));
   printf("a3 0x%lx\n",reg_d(13));
   printf("a4 0x%lx\n",reg_d(14));
-  printf("a6 0x%lx\n",reg_d(15));
-  printf("a7 0x%lx\n",reg_d(16));
+  printf("a5 0x%lx\n",reg_d(15));
+  printf("a6 0x%lx\n",reg_d(16));
   printf("a7 0x%lx\n",reg_d(17));
   printf("s2 0x%lx\n",reg_d(18));
   printf("s3 0x%lx\n",reg_d(19));
