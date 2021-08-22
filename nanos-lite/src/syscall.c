@@ -18,8 +18,7 @@ static inline int sys_write(int fd, const void *buf, size_t count)
 
 static inline int sys_brk(int increment)
 {
-  printf("sys_brk\n");
-  return -1;
+  return 0;
   
 }
 
