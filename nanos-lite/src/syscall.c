@@ -20,7 +20,7 @@ void do_syscall(Context *c)
   case SYS_yield:
     // printf("id %d\n", a[0]);
     yield();
-    c->GPRx = 0;
+    c->GPRx = 1;
     break;
 
   default:
