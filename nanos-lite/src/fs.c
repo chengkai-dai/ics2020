@@ -1,5 +1,4 @@
 #include <fs.h>
-#include <stdio.h>
 
 typedef size_t (*ReadFn)(void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn)(const void *buf, size_t offset, size_t len);
@@ -53,22 +52,22 @@ static Finfo file_table[] __attribute__((used)) = {
 #include "files.h"
 };
 
-// static const int file_length = (int)(sizeof(file_table) / sizeof(file_table[0]));
+static const int file_length = (int)(sizeof(file_table) / sizeof(file_table[0]));
 
 void init_fs()
 {
   // TODO: initialize the size of /dev/fb
 }
 
-// int fs_open(const char *pathname, int flags, int mode)
-// {
-//   for (int i = 3; i < file_length; ++i)
-//   {
-//     if (strcmp(pathname, file_table[i].name) == 0)
-//       return i;
-//   }
-//   return -1;
-// }
+int fs_open(const char *pathname, int flags, int mode)
+{
+  for (int i = 3; i < file_length; ++i)
+  {
+    if (strcmp(pathname, file_table[i].name) == 0)
+      return i;
+  }
+  return -1;
+}
 
 // size_t fs_read(int fd, void *buf, size_t len)
 // {
@@ -135,11 +134,7 @@ void init_fs()
 //   return 0;
 // }
 
-int fs_open(const char *pathname, int flags, int mode)
-{
- 
-  return 0;
-}
+
 
 size_t fs_read(int fd, void *buf, size_t len)
 {
