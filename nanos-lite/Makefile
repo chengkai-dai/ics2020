@@ -8,7 +8,7 @@ include $(AM_HOME)/Makefile
 ifeq ($(ARCH),native)
 ISA = am_native
 endif
-
+HAS_NAVY = 1
 ./src/resources.S: $(RAMDISK_FILE)
 	@touch $@
 
