@@ -20,6 +20,8 @@ static uintptr_t loader(PCB *pcb, const char *filename)
 
   Log("ELF loading from ram disk.");
 
+  printf("*(elf.e_ident) 0x%x\n",*(elf.e_ident));
+
   assert(*(elf.e_ident) == 0x464c457f);
 
   for (int i = 0; i < elf.e_phnum; ++i)
