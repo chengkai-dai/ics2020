@@ -60,7 +60,6 @@ void init_fs()
 
 int fs_open(const char *pathname, int flags, int mode)
 {
-  printf("file_length %d\n",file_length);
   for (int i = 3; i < file_length; ++i)
   {
     if (strcmp(pathname, file_table[i].name) == 0)
@@ -80,6 +79,7 @@ size_t fs_read(int fd, void *buf, size_t len)
 
   else
   {
+    printf("location %d\n",file_table[fd].disk_offset + file_table[fd].open_offset);
     assert(file_table[fd].open_offset + len <= file_table[fd].size);
     ramdisk_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
   }
