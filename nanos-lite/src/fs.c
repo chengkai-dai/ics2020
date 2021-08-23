@@ -71,19 +71,18 @@ int fs_open(const char *pathname, int flags, int mode)
 
 size_t fs_read(int fd, void *buf, size_t len)
 {
-  printf("fd %d\n", fd);
-  printf("disk_offset %d\n", file_table[fd].disk_offset);
-  printf("open_offset %d\n", file_table[fd].open_offset);
-    printf("len %d\n", len);
-  printf("size %d\n", file_table[fd].size);
+  // printf("fd %d\n", fd);
+  // printf("disk_offset %d\n", file_table[fd].disk_offset);
+  // printf("open_offset %d\n", file_table[fd].open_offset);
+  //   printf("len %d\n", len);
+  // printf("size %d\n", file_table[fd].size);
 
   assert(fd >= 3 && fd < file_length);
-  // assert(file_table[fd].open_offset + len <= file_table[fd].size);
+  assert(file_table[fd].open_offset + len <= file_table[fd].size);
   
 
   ramdisk_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
   file_table[fd].open_offset+=len;
-  printf("read %d\n",*(int*)buf);
 
   return len;
 }
@@ -118,11 +117,11 @@ size_t fs_lseek(int fd, size_t offset, int whence)
     break;
   case SEEK_CUR:
     file_table[fd].open_offset += offset;
-    assert(file_table[fd].open_offset <= file_table[fd].size);
+    //assert(file_table[fd].open_offset <= file_table[fd].size);
     break;
   case SEEK_END:
     file_table[fd].open_offset += file_table[fd].size + offset;
-    assert(file_table[fd].open_offset <= file_table[fd].size);
+    //assert(file_table[fd].open_offset <= file_table[fd].size);
     break;
   default:
     assert(0);
