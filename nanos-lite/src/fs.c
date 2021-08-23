@@ -60,6 +60,7 @@ void init_fs()
 
 int fs_open(const char *pathname, int flags, int mode)
 {
+  printf("file_length %d\n",file_length);
   for (int i = 3; i < file_length; ++i)
   {
     if (strcmp(pathname, file_table[i].name) == 0)
@@ -70,7 +71,6 @@ int fs_open(const char *pathname, int flags, int mode)
 
 size_t fs_read(int fd, void *buf, size_t len)
 {
-  printf("fd %d\n",fd);
   assert(fd >= 0 && fd < file_length && fd != 2 && fd != 3);
 
   if (fd == 0)
