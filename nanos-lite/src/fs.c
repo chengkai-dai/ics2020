@@ -80,9 +80,9 @@ size_t fs_read(int fd, void *buf, size_t len)
 }
 size_t fs_write(int fd, const void *buf, size_t len)
 {
-  printf("fd %d\n",fd);
-  assert(fd > 0 && fd < file_length && fd != 2);
-  if (fd == 1)
+  printf("fd %d\n", fd);
+  assert(fd > 0 && fd < file_length);
+  if (fd == 1 || fd == 2)
   {
     char *cbuf = (char *)buf;
     for (int i = 0; i < len; ++i)
