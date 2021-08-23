@@ -69,86 +69,68 @@ int fs_open(const char *pathname, int flags, int mode)
   return -1;
 }
 
-// size_t fs_read(int fd, void *buf, size_t len)
-// {
-//   assert(fd >= 0 && fd < file_length && fd != 2 && fd != 3);
-
-//   if (fd == 0)
-//   {
-//     assert(0);
-//   }
-
-//   else
-//   {
-//     ramdisk_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
-//   }
-
-//   return len;
-// }
-// size_t fs_write(int fd, const void *buf, size_t len)
-// {
-//   assert(fd > 0 && fd < file_length && fd != 2);
-//   if (fd == 1)
-//   {
-//     char *cbuf = (char *)buf;
-//     for (int i = 0; i < len; ++i)
-//     {
-//       putch(*(cbuf + i));
-//     }
-//   }
-//   else
-//   {
-
-//     ramdisk_write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
-//   }
-
-//   return len;
-// }
-// size_t fs_lseek(int fd, size_t offset, int whence)
-// {
-//   assert(fd >= 0 && fd < file_length);
-//   switch (whence)
-//   {
-//   case SEEK_SET:
-//     file_table[fd].open_offset += offset;
-//     return offset;
-//     break;
-//   case SEEK_CUR:
-//     file_table[fd].open_offset += offset;
-//     return file_table[fd].open_offset;
-//     break;
-//   case SEEK_END:
-//     file_table[fd].open_offset += file_table[fd].size + offset;
-//     assert(file_table[fd].open_offset <= file_table[fd].size);
-//     return file_table[fd].open_offset;
-//     break;
-//   default:
-//     assert(0);
-//     break;
-//   }
-// }
-// int fs_close(int fd)
-// {
-//   if (fd < 3 && fd > file_length)
-//     return -1;
-//   return 0;
-// }
-
-
-
 size_t fs_read(int fd, void *buf, size_t len)
 {
- return 0;
+  assert(fd >= 0 && fd < file_length && fd != 2 && fd != 3);
+
+  if (fd == 0)
+  {
+    assert(0);
+  }
+
+  else
+  {
+    ramdisk_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
+  }
+
+  return len;
 }
 size_t fs_write(int fd, const void *buf, size_t len)
 {
-  return 0;
+  assert(fd > 0 && fd < file_length && fd != 2);
+  if (fd == 1)
+  {
+    char *cbuf = (char *)buf;
+    for (int i = 0; i < len; ++i)
+    {
+      putch(*(cbuf + i));
+    }
+  }
+  else
+  {
+
+    ramdisk_write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
+  }
+
+  return len;
 }
 size_t fs_lseek(int fd, size_t offset, int whence)
 {
-  return 0;
+  assert(fd >= 0 && fd < file_length);
+  switch (whence)
+  {
+  case SEEK_SET:
+    file_table[fd].open_offset += offset;
+    return offset;
+    break;
+  case SEEK_CUR:
+    file_table[fd].open_offset += offset;
+    return file_table[fd].open_offset;
+    break;
+  case SEEK_END:
+    file_table[fd].open_offset += file_table[fd].size + offset;
+    assert(file_table[fd].open_offset <= file_table[fd].size);
+    return file_table[fd].open_offset;
+    break;
+  default:
+    assert(0);
+    break;
+  }
 }
 int fs_close(int fd)
 {
- return 0;
+  if (fd < 3 && fd > file_length)
+    return -1;
+  return 0;
 }
+
