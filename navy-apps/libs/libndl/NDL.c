@@ -31,14 +31,14 @@ int NDL_PollEvent(char *buf, int len)
   int ret = fread(buf, 1, len, fb_event);
   if (ret == 0)
     return 0;
-  for (int i = 0; i < len && ret != 0; i++)
-  {
-    if (buf[i] == '\n')
-    {
-      buf[i] = '\0';
-      return ret;
-    }
-  }
+  // for (int i = 0; i < len && ret != 0; i++)
+  // {
+  //   if (buf[i] == '\n')
+  //   {
+  //     buf[i] = '\0';
+  //     return ret;
+  //   }
+  // }
 }
 
 void NDL_OpenCanvas(int *w, int *h)
