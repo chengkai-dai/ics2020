@@ -138,7 +138,7 @@ int NDL_Init(uint32_t flags)
 
   fb_event = fopen("/dev/events", "r");
   fb_displayinfo = fopen("/proc/displayinfo", "r");
-  fb_fb = fopen("/dev/fb", "r+");
+  fb_fb = fopen("/dev/fb", "w");
 
   return 0;
 }
