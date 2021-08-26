@@ -27,14 +27,33 @@ size_t events_read(void *buf, size_t offset, size_t len)
 {
   AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
 
-  if(ev.keydown==false){
+  // if(ev.keydown==false){
+  //   return 0;
+  // }
+  // else
+  // {
+  //   printf("keycode %s\n",keyname[ev.keycode]);
+  //   memcpy(buf,keyname[ev.keycode],strlen(keyname[ev.keycode]));
+  // }
+  // return strlen(keyname[ev.keycode]);
+
+  if (ev.keycode == AM_KEY_NONE)
+  {
+    //memset(buf,0,len);
     return 0;
   }
   else
   {
-    memcpy(buf,keyname[ev.keycode],strlen(keyname[ev.keycode]));
+    memset(buf, 0, len);
+    if (ev.keydown)
+    {
+      sprintf((char *)buf, "kd %s\n", keyname[ev.keycode]);
+    }
+    else
+      sprintf((char *)buf, "ku %s\n", keyname[ev.keycode]);
+
+    return strlen((char *)buf);
   }
-  return strlen(keyname[ev.keycode]);
 }
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len)
