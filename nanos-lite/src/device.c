@@ -32,7 +32,6 @@ size_t events_read(void *buf, size_t offset, size_t len)
   }
   else
   {
-    printf("keycode %s\n",keyname[ev.keycode]);
     memcpy(buf,keyname[ev.keycode],strlen(keyname[ev.keycode]));
   }
   return strlen(keyname[ev.keycode]);

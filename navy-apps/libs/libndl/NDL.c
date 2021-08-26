@@ -4,10 +4,12 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
+#include <assert.h>
 
 static int evtdev = 4;
 static int fbdev = -1;
 static int screen_w = 0, screen_h = 0;
+static FILE* fb_event = NULL;
 
 uint32_t NDL_GetTicks()
 {
@@ -20,8 +22,23 @@ uint32_t NDL_GetTicks()
 
 int NDL_PollEvent(char *buf, int len)
 {
-  FILE *fp = fopen("/dev/events", "r+");
-  fscanf(fp, "%s", buf);
+  fseek(fb_event, 0, SEEK_SET);
+  assert(fb_event != NULL);
+  memset(buf, 0, len);
+  /* int ret = fread(buf ,1,3,fp);
+  fscanf(fp,"%s",buf+3); */
+  //printf("%d\n",len);
+  int ret = fread(buf, 1, len, fb_event);
+  if (ret == 0)
+    return 0;
+  for (int i = 0; i < len && ret != 0; i++)
+  {
+    if (buf[i] == '\n')
+    {
+      buf[i] = '\0';
+      return ret;
+    }
+  }
 }
 
 void NDL_OpenCanvas(int *w, int *h)
@@ -78,6 +95,9 @@ int NDL_Init(uint32_t flags)
   {
     evtdev = 3;
   }
+
+  fb_event = fopen("/dev/events", "r");
+
   return 0;
 }
 
