@@ -8,8 +8,15 @@
 
 static int evtdev = 4;
 static int fbdev = -1;
-static int screen_w = 0, screen_h = 0;
-static FILE* fb_event = NULL;
+static int screen_w = 480, screen_h = 640;
+
+static FILE *fb_event = NULL;
+static FILE *fb_displayinfo = NULL;
+static FILE *fb_fb = NULL;
+static int canvas_w = 0, canvas_h = 0;
+static int place_x = 0, place_y = 0;
+
+static uint32_t *canvas = NULL;
 
 uint32_t NDL_GetTicks()
 {
@@ -43,6 +50,17 @@ int NDL_PollEvent(char *buf, int len)
 
 void NDL_OpenCanvas(int *w, int *h)
 {
+  assert(*w < 0 && *h < 0);
+  if (*w > screen_w || *w == 0)
+    canvas_w = screen_w;
+  if (*h > screen_h || *h == 0)
+    canvas_h = screen_h;
+  canvas_h = *h;
+  canvas_w = *w;
+
+  place_x = (screen_w - canvas_w) / 2;
+  place_y = (screen_h - canvas_h) / 2;
+
   if (getenv("NWM_APP"))
   {
     int fbctl = 4;
@@ -69,6 +87,28 @@ void NDL_OpenCanvas(int *w, int *h)
 
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
 {
+
+  uint32_t *pixel_info = (uint32_t *)malloc(sizeof(uint32_t) * (screen_h) * (screen_w));
+
+  for (int i = 0; i < h; ++i)
+  {
+    for (int j = 0; j < w; ++j)
+    {
+      if (place_y + i < screen_h && place_x + j < screen_w)
+      {
+
+        // *(pixel_info + ctl->x + i * width + j) = inl(VGACTL_ADDR + 4 * (ctl->x + i * width + j));
+        pixel_info[place_y * screen_w + i * screen_w + place_x + j] = pixels[w * i + j];
+      }
+    }
+  }
+
+  for (int i = 0; i < h; ++i)
+  {
+
+    fseek(fb_fb, 4 * ((i + place_y) * screen_w + place_x), SEEK_SET);
+    fwrite((void *)(pixel_info + ((i + place_y) * screen_w)+ place_x), 1, 4 * canvas_w, fb_fb);
+  }
 }
 
 void NDL_OpenAudio(int freq, int channels, int samples)
@@ -97,6 +137,8 @@ int NDL_Init(uint32_t flags)
   }
 
   fb_event = fopen("/dev/events", "r");
+  fb_displayinfo = fopen("/proc/displayinfo", "r");
+  fb_fb = fopen("/dev/fb", "r+");
 
   return 0;
 }
