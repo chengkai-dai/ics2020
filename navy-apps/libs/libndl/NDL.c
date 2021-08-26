@@ -87,6 +87,8 @@ void NDL_OpenCanvas(int *w, int *h)
 
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
 {
+  printf("place_x %d\n",place_x);
+  printf("place_y %d\n",place_y);
 
   uint32_t *pixel_info = (uint32_t *)malloc(sizeof(uint32_t) * (screen_h) * (screen_w));
 
