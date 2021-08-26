@@ -18,7 +18,7 @@ int main()
     {
         unsigned long current_time = get_time();
 
-        if ((current_time - start_time) % 500 < 10)
+        if ((current_time - start_time) % 500 < 7)
         {
             printf("hello in %d ms\n", (int)(current_time - start_time));
         }
