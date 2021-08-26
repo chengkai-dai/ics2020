@@ -19,6 +19,8 @@ int main()
     while (1)
     {
         unsigned long current_time = get_time();
+        printf("current_time %d ms\n", (int)(current_time));
+
         if (current_time - start_time > 490 && current_time - start_time < 510)
         {
             printf("hello in %d ms\n", (int)(current_time - start_time));
