@@ -83,6 +83,9 @@ void NDL_OpenCanvas(int *w, int *h)
     }
     close(fbctl);
   }
+
+  printf("NDL_OpenCanvas place_x %d\n",place_x);
+  printf("NDL_OpenCanvas place_y %d\n",place_y);
 }
 
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
