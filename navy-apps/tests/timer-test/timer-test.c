@@ -13,20 +13,15 @@ static unsigned long get_time()
 int main()
 {
     unsigned long start_time = get_time();
-    unsigned long rec = start_time;
-    printf("start_time %d ms\n", (int)(start_time));
 
     while (1)
     {
         unsigned long current_time = get_time();
-        printf("current_time %d ms\n", (int)(current_time));
-        printf("current_time - start_time %d ms\n", (int)(current_time - start_time));
 
-        if (current_time - start_time > 490 && current_time - start_time < 510)
+        if ((current_time - start_time) % 500 < 20)
         {
             printf("hello in %d ms\n", (int)(current_time - start_time));
         }
-        start_time = current_time;
     }
 
     return 0;
