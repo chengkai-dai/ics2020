@@ -1,9 +1,28 @@
 #include <common.h>
 #include "syscall.h"
 #include "fs.h"
+#include <sys/time.h>
+#include <klib-macros.h>
 
 static inline int sys_brk(int addr)
 {
+  return 0;
+}
+
+static inline int sys_gettimeofday(struct timeval *tv, struct timezone *tz)
+{
+  if (tv == NULL)
+
+    return -1;
+
+  tv->tv_sec = io_read(AM_TIMER_UPTIME).us/1000000;
+  tv->tv_usec =io_read(AM_TIMER_UPTIME).us;
+
+  if (tz != NULL)
+  {
+    printf("time zone is not supported\n");
+    return -1;
+  }
   return 0;
 }
 
@@ -41,6 +60,10 @@ void do_syscall(Context *c)
     break;
   case SYS_brk:
     c->GPRx = sys_brk(c->GPR2);
+    break;
+
+  case SYS_gettimeofday:
+    c->GPRx = sys_gettimeofday((struct timeval *)c->GPR2, (struct timezone *)c->GPR3);
     break;
 
   default:
