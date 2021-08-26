@@ -25,18 +25,17 @@ size_t serial_write(const void *buf, size_t offset, size_t len)
 
 size_t events_read(void *buf, size_t offset, size_t len)
 {
-  bool keydown = io_read(AM_INPUT_KEYBRD).keydown;
-  // printf("keydown %d\n",keydown);
-  int keycode = io_read(AM_INPUT_KEYBRD).keycode;
-  if(keydown==false){
+  AM_INPUT_KEYBRD_T ev = io_read(AM_INPUT_KEYBRD);
+
+  if(ev.keydown==false){
     return 0;
   }
   else
   {
-    printf("keycode %s\n",keyname[keycode]);
-    memcpy(buf,keyname[keycode],strlen(keyname[keycode]));
+    printf("keycode %s\n",keyname[ev.keycode]);
+    memcpy(buf,keyname[ev.keycode],strlen(keyname[ev.keycode]));
   }
-  return strlen(keyname[keycode]);
+  return strlen(keyname[ev.keycode]);
 }
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len)
