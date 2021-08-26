@@ -14,6 +14,8 @@ int main()
 {
     unsigned long start_time = get_time();
     unsigned long rec = start_time;
+    printf("start_time %d ms\n", (int)(start_time));
+
     while (1)
     {
         unsigned long current_time = get_time();
