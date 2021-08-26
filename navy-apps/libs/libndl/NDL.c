@@ -8,7 +8,7 @@
 
 static int evtdev = 4;
 static int fbdev = -1;
-static int screen_w = 480, screen_h = 640;
+static int screen_w = 400, screen_h = 300;
 
 static FILE *fb_event = NULL;
 static FILE *fb_displayinfo = NULL;
