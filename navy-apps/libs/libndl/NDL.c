@@ -50,6 +50,7 @@ int NDL_PollEvent(char *buf, int len)
 
 void NDL_OpenCanvas(int *w, int *h)
 {
+    printf("NDL_OpenCanvas \n");
   assert(*w < 0 && *h < 0);
   if (*w > screen_w || *w == 0)
     canvas_w = screen_w;
