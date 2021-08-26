@@ -9,7 +9,6 @@ extern size_t events_read(void *buf, size_t offset, size_t len);
 extern size_t dispinfo_read(void *buf, size_t offset, size_t len);
 extern size_t fb_write(const void *buf, size_t offset, size_t len);
 
-
 typedef struct
 {
   char *name;
@@ -67,6 +66,9 @@ static const int file_length = (int)(sizeof(file_table) / sizeof(file_table[0]))
 void init_fs()
 {
   // TODO: initialize the size of /dev/fb
+  int w = io_read(AM_GPU_CONFIG).width;
+  int h = io_read(AM_GPU_CONFIG).height;
+  file_table[FD_FB].size = w * h * 4;
 }
 
 int fs_open(const char *pathname, int flags, int mode)
