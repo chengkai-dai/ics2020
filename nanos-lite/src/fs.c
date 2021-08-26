@@ -68,14 +68,11 @@ void init_fs()
   // TODO: initialize the size of /dev/fb
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
-  printf("w %d\n",w);
-  printf("h %d\n",h);
   file_table[FD_FB].size = w * h * 4;
 }
 
 int fs_open(const char *pathname, int flags, int mode)
 {
-  printf("open %s\n",pathname);
   for (int i = 3; i < file_length; ++i)
   {
     if (strcmp(pathname, file_table[i].name) == 0)

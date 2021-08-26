@@ -63,20 +63,18 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len)
   return sprintf((char *)buf, "WIDTH:%d\nHEIGHT:%d\n", w, h);
 }
 
-//    fwrite((void *)(pixel_info + ((i + place_y) * screen_w)+ place_x), 1, 4 * canvas_w, fb_fb);
 
 size_t fb_write(const void *buf, size_t offset, size_t len)
 {
-  //      io_write(AM_GPU_FBDRAW, x * w, y * h, color_buf, w, h, false);
 
   int w = io_read(AM_GPU_CONFIG).width;
   int h = io_read(AM_GPU_CONFIG).height;
-  int x = (offset/4)%w;
-  int y = (offset/4)/w;
-  if(offset+len > w*h*4) len = w*h*4 - offset;
-  io_write(AM_GPU_FBDRAW,x,y,(uint32_t*)buf,len/4,1,true);
-  //io_write(AM_GPU_FBDRAW, 0, 0, NULL, 0, 0, true);
-  assert(offset <= w*h*4);
+  int x = (offset / 4) % w;
+  int y = (offset / 4) / w;
+  if (offset + len > w * h * 4)
+    len = w * h * 4 - offset;
+  io_write(AM_GPU_FBDRAW, x, y, (uint32_t *)buf, len / 4, 1, true);
+  assert(offset <= w * h * 4);
   return len;
 }
 

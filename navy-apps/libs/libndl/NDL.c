@@ -50,7 +50,6 @@ int NDL_PollEvent(char *buf, int len)
 
 void NDL_OpenCanvas(int *w, int *h)
 {
-    printf("NDL_OpenCanvas \n");
   assert(*w >= 0 && *h >= 0);
   if (*w > screen_w || *w == 0)
     canvas_w = screen_w;
@@ -85,14 +84,10 @@ void NDL_OpenCanvas(int *w, int *h)
     close(fbctl);
   }
 
-  printf("NDL_OpenCanvas place_x %d\n",place_x);
-  printf("NDL_OpenCanvas place_y %d\n",place_y);
 }
 
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h)
 {
-  printf("place_x %d\n",place_x);
-  printf("place_y %d\n",place_y);
 
   uint32_t *pixel_info = (uint32_t *)malloc(sizeof(uint32_t) * (screen_h) * (screen_w));
 
