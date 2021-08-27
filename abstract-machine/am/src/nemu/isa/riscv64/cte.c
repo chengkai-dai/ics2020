@@ -11,10 +11,10 @@ Context *__am_irq_handle(Context *c)
     Event ev = {0};
     switch (c->cause)
     {
-      case 1:
+    case 1:
       ev.event = EVENT_SYSCALL;
       break;
-      case 2:
+    case 2:
       ev.event = EVENT_YIELD;
       break;
     default:
@@ -46,7 +46,10 @@ bool cte_init(Context *(*handler)(Event, Context *))
 
 Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
 {
-  return NULL;
+  Context *c = (Context *)kstack.end - 1;
+  c->GPR1 = (uintptr_t)arg;
+  c->GPRx = (uintptr_t)entry;
+  return c;
 }
 
 void yield()

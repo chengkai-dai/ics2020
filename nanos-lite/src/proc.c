@@ -26,6 +26,8 @@ void hello_fun(void *arg)
 
 void init_proc()
 {
+  context_kload(&pcb[0], hello_fun, NULL);
+
   switch_boot_pcb();
 
   Log("Initializing processes...");
@@ -35,5 +37,16 @@ void init_proc()
 
 Context *schedule(Context *prev)
 {
-  return NULL;
+  current->cp = prev;
+
+  // always select pcb[0] as the new process
+  current = &pcb[0];
+
+  // then return the new context
+  return current->cp;
+}
+
+void  context_kload(PCB* pcb, void* fun, void * unknow){
+
+  current->cp=kcontext(pcb->as.area, fun, unknow);
 }
