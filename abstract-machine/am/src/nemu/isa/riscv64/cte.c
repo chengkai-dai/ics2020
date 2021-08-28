@@ -47,9 +47,9 @@ bool cte_init(Context *(*handler)(Event, Context *))
 
 Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
 {
-  Context *c = (Context *)kstack.end - 1;
+  // Context *c = (Context *)kstack.end - 1;
 
-    // Context *c =  (Context *)((uint8_t *)(kstack.end) - sizeof(Context) - 40);
+    Context *c =  (Context *)((uint8_t *)(kstack.end) - sizeof(Context) - 39);
 
   printf("c location %x\n",c);
   printf("c location end %x\n",(uintptr_t)c+sizeof(Context));
@@ -57,11 +57,6 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
   c->epc = (uintptr_t)entry;
 
   c->GPR2 = (uintptr_t)arg;
-
-  uintptr_t *a = (uintptr_t *)(c+1);
-
-  printf("a location %x\n",(uintptr_t)a);
-
 
   return c;
 }
