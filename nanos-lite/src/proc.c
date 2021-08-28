@@ -60,7 +60,7 @@ Context *schedule(Context *prev)
   else
     current=&pcb[0];
   // current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
-  printf("current->t0 %x\n",current->cp->GPR2);
+  // printf("current->t0 %x\n",current->cp->GPR2);
   // printf("current->epc %x\n",current->cp->epc);
 
   printf("schedule end\n");
