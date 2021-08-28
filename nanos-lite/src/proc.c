@@ -31,10 +31,10 @@ void init_proc()
 
   context_kload(&pcb[0], hello_fun, (void *)"t1");
 
-  context_kload(&pcb[1], hello_fun, (void *)"t2");
+  printf("&pcb[0] %x\n",&pcb[0]);
 
-printf("pcb[1] %x\n",&pcb[1]);
-printf("pcb[1]->cp %x\n",((PCB*)&pcb[1])->cp->epc);
+  context_kload(&pcb[1], hello_fun, (void *)"t2");
+  printf("&pcb[1] %x\n",&pcb[1]);
 
   Log("Initializing processes...");
 
@@ -46,12 +46,7 @@ Context *schedule(Context *prev)
   current->cp = prev;
 
   current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
-  printf("current %x\n",current);
-printf("pcb[0]->cp %x\n",((PCB*)&pcb[0])->cp->epc);
-printf("pcb[1]->cp %x\n",((PCB*)&pcb[1])->cp->epc);
-
-printf("current->cp %x\n",((PCB*)current)->cp->epc);
-
+  
   // then return the new context
   return current->cp;
 }
