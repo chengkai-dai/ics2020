@@ -58,6 +58,11 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
 
   c->GPR2 = (uintptr_t)arg;
 
+  uintptr_t *a = (uintptr_t *)(c+1);
+
+  printf("a location %x\n",(uintptr_t)a);
+
+
   return c;
 }
 
