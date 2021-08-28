@@ -52,6 +52,7 @@ void context_kload(PCB *pcb, void *fun, void *unknow)
 
   printf("stack start %x\n", &pcb->stack);
   printf("stack end %x\n", &pcb->stack + STACK_SIZE);
+  printf("STACK_SIZE %d\n", STACK_SIZE);
 
 #define STACK_FRAME RANGE(&pcb->stack, &pcb->stack + STACK_SIZE)
 
