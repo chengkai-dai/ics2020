@@ -49,10 +49,8 @@ Context *schedule(Context *prev)
 
 void context_kload(PCB *pcb, void *fun, void *unknow)
 {
-printf("111\n");
 #define STACK_FRAME RANGE((uint64_t)&pcb->stack,  (uint64_t)(&pcb->stack) + STACK_SIZE)
 
-  current->cp = kcontext(STACK_FRAME, fun, unknow);
-  printf("222\n");
+  (&pcb[0])->cp = kcontext(STACK_FRAME, fun, unknow);
 
 }
