@@ -7,7 +7,7 @@ extern void naive_uload(PCB *pcb, const char *filename);
 static PCB pcb[MAX_NR_PROC] __attribute__((used)) = {};
 static PCB pcb_boot = {};
 PCB *current = NULL;
-void context_kload(PCB *pcb, void *fun, void *unknow);
+void context_kload(PCB *pcb, void *fun, void *args);
 
 void switch_boot_pcb()
 {
@@ -47,10 +47,10 @@ Context *schedule(Context *prev)
   return current->cp;
 }
 
-void context_kload(PCB *pcb, void *fun, void *unknow)
+void context_kload(PCB *pcb, void *fun, void *args)
 {
 #define STACK_FRAME RANGE((uint64_t)&pcb->stack,  (uint64_t)(&pcb->stack) + STACK_SIZE)
 
-  pcb->cp = kcontext(STACK_FRAME, fun, unknow);
+  pcb->cp = kcontext(STACK_FRAME, fun, args);
 
 }
