@@ -64,6 +64,7 @@ Context *schedule(Context *prev)
   // printf("current->epc %x\n",current->cp->epc);
 
   printf("schedule end\n");
+    printf("current->cp %x\n",current->cp);
 
   // then return the new context
   return current->cp;
