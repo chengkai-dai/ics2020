@@ -49,6 +49,8 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
 {
   Context *c =  (Context *)((uint8_t *)(kstack.end) - sizeof(Context) - sizeof(uintptr_t));
 
+  printf("c location %x\n",c);
+
   c->epc = (uintptr_t)entry;
 
   c->GPR2 = (uintptr_t)arg;
