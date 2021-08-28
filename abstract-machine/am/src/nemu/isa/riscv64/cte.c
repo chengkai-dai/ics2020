@@ -8,9 +8,12 @@ Context *__am_irq_handle(Context *c)
 {
   if (user_handler)
   {
+        printf("__am_irq_handle c->GPR2 %x\n",c->GPR2);
+
     Event ev = {0};
     switch (c->cause)
     {
+      
     case 1:
       ev.event = EVENT_SYSCALL;
       break;
