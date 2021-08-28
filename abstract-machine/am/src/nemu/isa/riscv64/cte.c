@@ -50,7 +50,11 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
   Context *c = (Context *)kstack.end - 1;
   printf("kstack.end %x\n",kstack.end);
   c->GPR1 = (uintptr_t)arg;
+    printf("kstack.end1 %x\n",kstack.end);
+
   c->GPRx = (uintptr_t)entry;
+    printf("kstack.end2 %x\n",kstack.end);
+
   return c;
 }
 
