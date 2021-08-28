@@ -31,10 +31,7 @@ void init_proc()
 
   context_kload(&pcb[0], hello_fun, (void *)"t1");
 
-  printf("&pcb[0] %x\n", &pcb[0]);
-
   context_kload(&pcb[1], hello_fun, (void *)"t2");
-  printf("&pcb[1] %x\n", &pcb[1]);
 
   Log("Initializing processes...");
 
