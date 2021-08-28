@@ -45,9 +45,11 @@ Context *schedule(Context *prev)
   current->cp = prev;
 
   // always select pcb[0] as the new process
-  current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
-  printf("current->t0 %x\n",current->cp->GPR2);
-  printf("current->epc %x\n",current->cp->epc);
+  // current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
+  // printf("current->t0 %x\n",current->cp->GPR2);
+  // printf("current->epc %x\n",current->cp->epc);
+
+  current =  &pcb[0];
 
   // then return the new context
   return current->cp;
