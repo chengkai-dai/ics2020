@@ -51,8 +51,12 @@ Context *schedule(Context *prev)
   printf("pcb[1] %x\n",&pcb[1]);
   printf("current == &pcb[0] %d\n",current == &pcb[0]);
 
-  if(current == &pcb[0])
+  if(current == &pcb[0]){
+      printf("start\n");
+
     current=&pcb[1];
+    printf("end\n");
+  }
   else
     current=&pcb[0];
   // current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
