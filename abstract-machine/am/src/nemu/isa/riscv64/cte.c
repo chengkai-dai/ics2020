@@ -49,7 +49,7 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
 {
   // Context *c = (Context *)kstack.end - 1;
 
-    Context *c =  (Context *)((uint8_t *)(kstack.end) - sizeof(Context) - 20);
+    Context *c =  (Context *)((uint8_t *)(kstack.end) - sizeof(Context) - 30);
 
   printf("c location %x\n",c);
   printf("c location end %x\n",(uintptr_t)c+sizeof(Context));
