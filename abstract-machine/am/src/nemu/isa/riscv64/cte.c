@@ -11,7 +11,7 @@ Context *__am_irq_handle(Context *c)
     Event ev = {0};
     switch (c->cause)
     {
-      
+
     case 1:
       ev.event = EVENT_SYSCALL;
       break;
@@ -50,6 +50,8 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
   Context *c = (Context *)kstack.end - 1;
 
   c->epc = (uintptr_t)entry;
+
+  c->GPR2 = (uintptr_t)arg;
 
   return c;
 }
