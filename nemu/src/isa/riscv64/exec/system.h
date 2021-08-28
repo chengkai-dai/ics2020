@@ -23,7 +23,7 @@ static inline def_EHelper(syscall)
         // printf("do No. %ld syscall\n",syscall_id);
         //assert(success == true);
         //raise_intr(s, syscall_id, cpu.pc);
-        raise_intr(s, 1, cpu.pc);
+        raise_intr(s, 2, cpu.pc);
 
         print_asm("ecall\n");
     }
