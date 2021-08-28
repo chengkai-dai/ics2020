@@ -9,7 +9,7 @@ static Context *do_event(Event e, Context *c)
   switch (e.event)
   {
   case EVENT_YIELD:
-    printf("do_event c->GPRx %x\n",c->GPRx);
+    printf("do_event c->GPR1 %x\n",c->GPR1);
 
     c=schedule(c);
     break;
