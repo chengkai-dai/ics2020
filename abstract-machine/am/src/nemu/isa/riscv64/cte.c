@@ -52,7 +52,6 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
 
   c->epc = (uintptr_t)entry;
 
-  printf("kcontext c->epc %x\n",c->epc);
   return c;
 }
 
