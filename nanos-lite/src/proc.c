@@ -51,7 +51,7 @@ Context *schedule(Context *prev)
 printf("current->cp %x\n",current->cp->epc);
 
   // then return the new context
-  return current->cp;
+  return ((PCB*)current)->cp;
 }
 
 void context_kload(PCB *pcb, void *fun, void *args)
