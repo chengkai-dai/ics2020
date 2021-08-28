@@ -46,7 +46,9 @@ bool cte_init(Context *(*handler)(Event, Context *))
 
 Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
 {
+  printf("3333333\n");
   Context *c = (Context *)kstack.end - 1;
+  printf("kstack.end %x\n",kstack.end);
   c->GPR1 = (uintptr_t)arg;
   c->GPRx = (uintptr_t)entry;
   return c;
