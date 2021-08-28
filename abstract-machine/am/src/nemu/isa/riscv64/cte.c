@@ -49,7 +49,7 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
 {
   Context *c = (Context *)kstack.end - 1;
   c->GPR1 = (uintptr_t)arg;
-  c->GPRx = (uintptr_t)entry;
+  c->GPR2 = (uintptr_t)entry;
 
   printf("kcontext c->GPRx %x\n",c->GPRx);
   return c;
