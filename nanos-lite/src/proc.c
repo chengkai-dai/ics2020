@@ -30,10 +30,10 @@ void init_proc()
   switch_boot_pcb();
 
   context_kload(&pcb[0], hello_fun, (void *)"t1");
-  printf("t1->GPR1 %x\n",pcb[0].cp->GPR1);
+  printf("t1->t0 %x\n",pcb[0].cp->GPR2);
 
   context_kload(&pcb[1], hello_fun, (void *)"t2");
-  printf("t2->GPR1 %x\n",pcb[1].cp->GPR1);
+  printf("t2->t0 %x\n",pcb[1].cp->GPR2);
 
   Log("Initializing processes...");
 
