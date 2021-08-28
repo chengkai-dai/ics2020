@@ -33,6 +33,9 @@ void init_proc()
 
   context_kload(&pcb[1], hello_fun, (void *)"t2");
 
+printf("pcb[1] %x\n",(PCB*)(&pcb[1])->cp->epc);
+printf("pcb[0] %x\n",(PCB*)(&pcb[0])->cp->epc);
+
   Log("Initializing processes...");
 
   naive_uload(NULL, "/bin/dummy");
