@@ -46,10 +46,13 @@ Context *schedule(Context *prev)
   printf("schedule start\n");
 
   // always select pcb[0] as the new process
+  if(current == &pcb[0])
+    current=&pcb[1];
+  else
+    current=&pcb[0];
   // current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
   printf("current->t0 %x\n",current->cp->GPR2);
   // printf("current->epc %x\n",current->cp->epc);
-  current = &pcb[1];
 
   printf("schedule end\n");
 
