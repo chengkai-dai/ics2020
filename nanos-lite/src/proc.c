@@ -43,7 +43,7 @@ Context *schedule(Context *prev)
   // always select pcb[0] as the new process
   current = &pcb[0];
 
-    printf("schedule c->epc %x\n",current->cp);
+    printf("schedule c->epc %x\n",current->cp->epc);
 
 
   // then return the new context
