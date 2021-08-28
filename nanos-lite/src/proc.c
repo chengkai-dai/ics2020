@@ -53,7 +53,7 @@ printf("pcb[1]->cp %x\n",((PCB*)&pcb[1])->cp->epc);
 printf("current->cp %x\n",((PCB*)current)->cp->epc);
 
   // then return the new context
-  return ((PCB*)current)->cp;
+  return current->cp;
 }
 
 void context_kload(PCB *pcb, void *fun, void *args)
