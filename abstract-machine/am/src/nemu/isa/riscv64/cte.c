@@ -9,7 +9,6 @@ Context *__am_irq_handle(Context *c)
   if (user_handler)
   {
     Event ev = {0};
-    printf("thread args %s\n",(char*)c->GPR2);
     switch (c->cause)
     {
 

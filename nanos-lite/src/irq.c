@@ -13,6 +13,7 @@ static Context *do_event(Event e, Context *c)
   case EVENT_YIELD:
 
     c=schedule(c);
+    printf("c->GPR1 %x\n",c->GPR1);
     break;
   case EVENT_SYSCALL:
     do_syscall(c);
