@@ -27,9 +27,9 @@ void hello_fun(void *arg)
 
 void init_proc()
 {
-  context_kload(&pcb[0], hello_fun, NULL);
-
   switch_boot_pcb();
+
+  context_kload(&pcb[0], hello_fun, NULL);
 
   Log("Initializing processes...");
 
@@ -51,6 +51,6 @@ void context_kload(PCB *pcb, void *fun, void *unknow)
 {
 #define STACK_FRAME RANGE((uint64_t)&pcb->stack,  (uint64_t)(&pcb->stack) + STACK_SIZE)
 
-  (&pcb[0])->cp = kcontext(STACK_FRAME, fun, unknow);
+  current->cp = kcontext(STACK_FRAME, fun, unknow);
 
 }
