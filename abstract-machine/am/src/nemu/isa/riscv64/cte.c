@@ -8,8 +8,6 @@ Context *__am_irq_handle(Context *c)
 {
   if (user_handler)
   {
-        printf("__am_irq_handle c->GPR2 %x\n",c->GPR2);
-
     Event ev = {0};
     switch (c->cause)
     {
@@ -51,10 +49,10 @@ bool cte_init(Context *(*handler)(Event, Context *))
 Context *kcontext(Area kstack, void (*entry)(void *), void *arg)
 {
   Context *c = (Context *)kstack.end - 1;
-  c->GPR1 = (uintptr_t)arg;
-  c->GPR2 = (uintptr_t)entry;
 
-  printf("kcontext c->GPRx %x\n",c->GPRx);
+  c->epc = (uintptr_t)entry;
+
+  printf("kcontext c->epc %x\n",c->epc);
   return c;
 }
 

@@ -6,8 +6,11 @@ extern void do_syscall(Context *c);
 
 static Context *do_event(Event e, Context *c)
 {
+    printf("kcontext c->epc %x\n",c->epc);
+
   switch (e.event)
   {
+
   case EVENT_YIELD:
 
     c=schedule(c);
