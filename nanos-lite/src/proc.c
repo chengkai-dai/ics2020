@@ -43,12 +43,14 @@ void init_proc()
 Context *schedule(Context *prev)
 {
   current->cp = prev;
+  printf("schedule start\n");
 
   // always select pcb[0] as the new process
   current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
   // printf("current->t0 %x\n",current->cp->GPR2);
   // printf("current->epc %x\n",current->cp->epc);
 
+  printf("schedule end\n");
 
   // then return the new context
   return current->cp;
