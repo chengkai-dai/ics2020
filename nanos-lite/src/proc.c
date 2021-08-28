@@ -49,6 +49,7 @@ Context *schedule(Context *prev)
   printf("current %x\n",current);
   printf("pcb[0] %x\n",&pcb[0]);
   printf("pcb[1] %x\n",&pcb[1]);
+  printf("current == &pcb[0] %d\n",current == &pcb[0]);
 
   if(current == &pcb[0])
     current=&pcb[1];
