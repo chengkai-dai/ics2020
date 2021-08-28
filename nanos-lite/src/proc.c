@@ -30,10 +30,8 @@ void init_proc()
   switch_boot_pcb();
 
   context_kload(&pcb[0], hello_fun, (void *)"t1");
-  printf("t1->t0 %x\n",pcb[0].cp->GPR2);
 
   context_kload(&pcb[1], hello_fun, (void *)"t2");
-  printf("t2->t0 %x\n",pcb[1].cp->GPR2);
 
   Log("Initializing processes...");
 
@@ -43,29 +41,9 @@ void init_proc()
 Context *schedule(Context *prev)
 {
   current->cp = prev;
-  printf("schedule start\n");
 
-  // always select pcb[0] as the new process
-  printf("current %x\n",current);
-  printf("pcb[0] %x\n",&pcb[0]);
-  printf("pcb[1] %x\n",&pcb[1]);
-  printf("current == &pcb[0] %d\n",current == &pcb[0]);
-
-  if(current == &pcb[0]){
-      printf("start\n");
-
-    current=&pcb[1];
-    printf("end\n");
-  }
-  else
-    current=&pcb[0];
-  // current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
-  // printf("current->t0 %x\n",current->cp->GPR2);
-  // printf("current->epc %x\n",current->cp->epc);
-
-  printf("schedule end\n");
-    printf("current->cp->epc %x\n",current->cp->epc);
-
+  current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
+  
   // then return the new context
   return current->cp;
 }
