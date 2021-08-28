@@ -54,7 +54,7 @@ void context_kload(PCB *pcb, void *fun, void *unknow)
   printf("stack end %x\n", (uint64_t)(&pcb->stack) + STACK_SIZE);
   printf("STACK_SIZE %x\n", STACK_SIZE);
 
-#define STACK_FRAME RANGE(&pcb->stack, &pcb->stack + STACK_SIZE)
+#define STACK_FRAME RANGE((uint64_t)&pcb->stack,  (uint64_t)(&pcb->stack) + STACK_SIZE)
 
   current->cp = kcontext(STACK_FRAME, fun, unknow);
 }
